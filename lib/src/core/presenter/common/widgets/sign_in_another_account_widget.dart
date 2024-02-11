@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/presenter/common/design/app_style_design.dart';
-import '../../../../../core/presenter/common/design/app_theme_design.dart';
-import '../../../../../core/presenter/utils/constants/app_name_constant.dart';
+import '../design/app_style_design.dart';
+import '../design/app_theme_design.dart';
+import '../../utils/constants/app_name_constant.dart';
 
-class SignInAnotherAccountComponent extends StatelessWidget {
-  const SignInAnotherAccountComponent({super.key});
+class SignInAnotherAccountWidget extends StatelessWidget {
+  const SignInAnotherAccountWidget({super.key, this.text});
+
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class SignInAnotherAccountComponent extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * .03),
               child: Text(
-                AppNameConstant.signInAnotherAccountText,
+                text ?? AppNameConstant.signInAnotherAccountText,
                 style: AppStyleDesign.fontStyleInter(
                   context: context,
                   size: size.height * .014,

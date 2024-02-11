@@ -17,4 +17,9 @@ class AppNameConstant {
   static String createText = "Criar";
   static String emailText = "E-mail";
   static String passwordText = "Palavra-passe";
+  static String titleSignUpText = "Olá! Registre para começar.";
+  static String confirmPasswordText = "Confirmar Palavra-passe";
+  static String haveAnAccountText = "Já tem uma conta?";
+  static String createAccountText = "Criar conta";
+  static String signUpAnotherAccountText = "Ou criar com";
 }
