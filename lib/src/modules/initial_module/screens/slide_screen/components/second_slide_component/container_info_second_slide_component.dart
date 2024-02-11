@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../../../core/presenter/common/design/app_theme_design.dart';
+import '../../../../../../core/presenter/providers/module_providers/slide_providers.dart';
 import '../../../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../../../core/presenter/utils/constants/app_image_constants.dart';
 import '../../../../../../core/presenter/common/widgets/button_opacity_widget.dart';
@@ -46,12 +47,12 @@ class ContainerInfoSecondSlideComponent extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(bottom: size.height * .07),
                     child: ButtonOpacityWidget(
-                      height: size.height * .075,
                       onTap: () => _pageController.animateToPage(
                         2, 
                         duration: const Duration(seconds: 1), 
                         curve: Curves.fastEaseInToSlowEaseOut
                       ),
+                      provider: buttonSecondSlideStateProvider,
                       textButton: AppNameConstant.continueText,
                       backgroundColor: AppThemeDesign.defaulTheme.colorScheme.primary,
                     ),

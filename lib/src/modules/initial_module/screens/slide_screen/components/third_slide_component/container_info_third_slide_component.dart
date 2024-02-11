@@ -1,8 +1,11 @@
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import '../../../../../../core/presenter/common/routes/app_name_route.dart';
 import '../../../../../../core/presenter/common/design/app_theme_design.dart';
+import '../../../../../../core/presenter/providers/module_providers/slide_providers.dart';
 import '../../../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../../../core/presenter/utils/constants/app_image_constants.dart';
 import '../../../../../../core/presenter/common/widgets/button_opacity_widget.dart';
@@ -47,9 +50,9 @@ class ContainerInfoThirdSlideComponent extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(bottom: size.height * .07),
                   child: ButtonOpacityWidget(
-                    height: size.height * .075,
-                    onTap: () { },
+                    onTap: () => Get.offNamed(AppNameRoute.signInScreen),
                     textButton: AppNameConstant.startText,
+                    provider: buttonThirdSlideStateProvider,
                     backgroundColor: AppThemeDesign.defaulTheme.colorScheme.primary,
                   ),
                 ),

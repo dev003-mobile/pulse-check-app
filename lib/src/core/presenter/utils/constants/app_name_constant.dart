@@ -8,4 +8,13 @@ class AppNameConstant {
   static String thirdSlideTitleText = "Veja suas medições em gráficos informativos.";
   static String thirdSlideDescriptionText = "Visualize suas medições de pressão arterial em gráficos fáceis de entender, que destacam tendências e padrões ao longo do tempo.";
   static String startText = "Começar";
+  static String logInText = "Entrar";
+  static String logInGoogleText = "Entrar com Google";
+  static String titleSignInText = "Seja bem-vindo. Explore o app ao todo";
+  static String forgotPasswordText = "Esqueceu a senha?";
+  static String signInAnotherAccountText = "Ou entrar com";
+  static String dontHaveAnAccountText = "Não tem uma conta?";
+  static String createText = "Criar";
+  static String emailText = "E-mail";
+  static String passwordText = "Palavra-passe";
 }

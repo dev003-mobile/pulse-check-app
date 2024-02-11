@@ -7,6 +7,7 @@ import '../../../../../../core/presenter/utils/constants/app_name_constant.dart'
 import '../../../../../../core/presenter/utils/constants/app_image_constants.dart';
 import '../../../../../../core/presenter/common/widgets/button_opacity_widget.dart';
 import '../../../../../../core/presenter/common/widgets/description_slide_widget.dart';
+import '../../../../../../core/presenter/providers/module_providers/slide_providers.dart';
 
 class ContainerInfoFirstSlideComponent extends StatelessWidget {
   const ContainerInfoFirstSlideComponent(this._pageController, {super.key});
@@ -49,12 +50,12 @@ class ContainerInfoFirstSlideComponent extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(bottom: size.height * .07),
                     child: ButtonOpacityWidget(
-                      height: size.height * .075,
                       onTap: () => _pageController.animateToPage(
                         1, 
                         duration: const Duration(seconds: 1), 
                         curve: Curves.fastEaseInToSlowEaseOut
                       ),
+                      provider: buttonFirstSlideStateProvider,
                       textButton: AppNameConstant.continueText,
                       backgroundColor: AppThemeDesign.defaulTheme.colorScheme.primary,
                     ),
