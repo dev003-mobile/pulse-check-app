@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app_theme_design.dart';
+
 class AppStyleDesign {
   static TextStyle fontStyleInter({
     required double size,
@@ -10,7 +12,7 @@ class AppStyleDesign {
     TextDecoration? decoration,
     required BuildContext context
   }) => TextStyle(
-    color: color,
+    color: color ?? AppThemeDesign.defaulTheme.colorScheme.primary,
     height: height,
     fontSize: size,
     fontFamily: "Inter",
