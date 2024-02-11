@@ -1,3 +1,7 @@
 import "package:flutter/material.dart";
 
-void main() => runApp(const Scaffold());
+import 'src/core/presenter/app/app_widget.dart';
+
+void main() async {
+  runApp(const AppWidget());
+}
