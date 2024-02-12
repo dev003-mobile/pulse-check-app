@@ -29,7 +29,7 @@ class JumpTextComponent extends ConsumerWidget {
             style: AppStyleDesign.fontStyleInter(
               context: context,
               size: size.height * .016, 
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w500,
               color: AppThemeDesign.defaulTheme.colorScheme.background
             ),
           )

@@ -22,4 +22,7 @@ class AppNameConstant {
   static String haveAnAccountText = "Já tem uma conta?";
   static String createAccountText = "Criar conta";
   static String signUpAnotherAccountText = "Ou criar com";
+  static String titleForgotPasswordText = "Esqueceu a senha?";
+  static String descriptionForgotPasswordText = "Não se preocupe! Isso acontece. Introduza o endereço de correio eletrónico associado à sua conta.";
+  static String recoverText = "Recuperar";
 }

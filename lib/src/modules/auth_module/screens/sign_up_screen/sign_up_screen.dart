@@ -31,13 +31,13 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: size.height * .03,
-            horizontal: size.width * .06
-          ),
+          padding: EdgeInsets.symmetric(horizontal: size.width * .06),
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
-            padding: EdgeInsets.only(bottom: size.height * .02),
+            padding: EdgeInsets.only(
+              top: size.height * .03,
+              bottom: size.height * .02
+            ),
             child: Column(
               children: <Widget>[
                 SizedBox(
