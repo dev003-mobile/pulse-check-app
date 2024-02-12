@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../common/routes/app_routes.dart';
 import '../common/routes/app_name_route.dart';
@@ -18,6 +19,11 @@ class AppWidget extends StatelessWidget {
       defaultTransition: Transition.fadeIn,
       darkTheme: AppThemeDesign.defaulTheme,
       initialRoute: AppNameRoute.splashScreen,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: const [
+        Locale('en', ''),
+        Locale('pt', ''),
+      ],
       transitionDuration: const Duration(milliseconds: 300),
     );
   }
