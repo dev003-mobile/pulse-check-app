@@ -37,9 +37,9 @@ class BottomNavigationComponent extends ConsumerWidget {
                         flex: 1,
                         child: BoottomItemWidget(
                           title: "Medições",
-                          selected: ref.read(currentIndexProvider.notifier).state == 1,
+                          selected: ref.read(currentIndexProvider.notifier).state == 0,
                           onTap: () {
-                            ref.read(currentIndexProvider.notifier).state = 1;
+                            ref.read(currentIndexProvider.notifier).state = 0;
                             _pageController.animateToPage(
                               ref.read(currentIndexProvider.notifier).state, 
                               duration: const Duration(seconds: 1), 
@@ -56,7 +56,7 @@ class BottomNavigationComponent extends ConsumerWidget {
                           width: size.width * .135,
                           child: FloatingActionButton(
                             onPressed: () {
-                              ref.read(currentIndexProvider.notifier).state = 2;
+                              ref.read(currentIndexProvider.notifier).state = 1;
                               _pageController.animateToPage (
                                 ref.read(currentIndexProvider.notifier).state, 
                                 duration: const Duration(seconds: 1), 
@@ -86,9 +86,9 @@ class BottomNavigationComponent extends ConsumerWidget {
                         flex: 1,
                         child: BoottomItemWidget(
                           title: "Estatísticas",
-                          selected: ref.read(currentIndexProvider.notifier).state == 4,
+                          selected: ref.read(currentIndexProvider.notifier).state == 2,
                           onTap: () {
-                            ref.read(currentIndexProvider.notifier).state = 4;
+                            ref.read(currentIndexProvider.notifier).state = 2;
                             _pageController.animateToPage(
                               ref.read(currentIndexProvider.notifier).state, 
                               duration: const Duration(seconds: 1), 

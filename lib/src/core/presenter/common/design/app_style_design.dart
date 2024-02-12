@@ -12,7 +12,7 @@ class AppStyleDesign {
     TextDecoration? decoration,
     required BuildContext context
   }) => TextStyle(
-    color: color ?? AppThemeDesign.defaulTheme.colorScheme.primary,
+    color: color ?? AppThemeDesign.defaulTheme.colorScheme.surface,
     height: height,
     fontSize: size,
     fontFamily: "Inter",

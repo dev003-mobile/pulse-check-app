@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../_stores/main_store.dart';
+import 'home_screen/home_screen.dart';
 import 'components/bottom_navigation_component.dart';
 import '../../../core/presenter/providers/global_providers.dart';
 
@@ -37,7 +38,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           controller: _store.pageController,
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
-            Container(),
+            const HomeScreen(),
             Container(),
             Container(),
           ],

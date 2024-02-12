@@ -23,6 +23,8 @@ class BoottomItemWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Size size = MediaQuery.sizeOf(context);
     return SizedBox(
+      width: size.width,
+      height: size.height,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: size.height * .011),
         child: GestureDetector(
