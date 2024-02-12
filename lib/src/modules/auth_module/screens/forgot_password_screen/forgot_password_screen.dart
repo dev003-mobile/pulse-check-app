@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../core/presenter/common/design/app_theme_design.dart';
-import '../../../../core/presenter/common/widgets/button_opacity_widget.dart';
 import '../../../../core/presenter/common/widgets/icon_back_widget.dart';
-import '../../../../core/presenter/providers/module_providers/forgot_password_providers.dart';
 import '../../../../core/presenter/utils/constants/app_name_constant.dart';
+import '../../../../core/presenter/common/widgets/button_opacity_widget.dart';
 import '../../../../core/presenter/common/widgets/textfield_default_widget.dart';
+import '../../../../core/presenter/providers/module_providers/forgot_password_providers.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
@@ -51,8 +51,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
               ),
               Gap(size.height * .05),
-              TextFieldDefaultWidget(
-                hintText: AppNameConstant.emailText,
+              SizedBox(
+                child: TextFieldDefaultWidget(
+                  hintText: AppNameConstant.emailText,
+                ),
               ),
               Gap(size.height * .02),
               SizedBox(

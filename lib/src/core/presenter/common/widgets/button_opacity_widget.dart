@@ -45,7 +45,7 @@ class _ButtonOpacityWidgetState extends ConsumerState<ButtonOpacityWidget> {
     ref.watch(widget.provider);
     return SizedBox(
       width: widget.width ?? size.width,
-      height: widget.height ?? size.height * .065,
+      height: widget.height ?? size.height * .07,
       child: InkWell(
         onTap: widget.isLoading ? null : widget.onTap,
         borderRadius: const BorderRadius.all(Radius.circular(8)),
