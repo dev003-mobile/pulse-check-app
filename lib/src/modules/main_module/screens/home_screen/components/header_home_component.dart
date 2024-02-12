@@ -1,7 +1,9 @@
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
+import '../../../../../core/presenter/common/routes/app_name_route.dart';
 import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
 import '../../../../../core/presenter/utils/constants/app_image_constants.dart';
@@ -63,7 +65,7 @@ class HeaderHomeComponent extends StatelessWidget {
               ),
               SizedBox(
                 child: InkWell(
-                  onTap: () { },
+                  onTap: () => Get.toNamed(AppNameRoute.filterScreen),
                   splashColor: AppThemeDesign.defaulTheme.colorScheme.primary.withOpacity(.2),
                   borderRadius: const BorderRadius.all(Radius.circular(5)),
                   child: Padding(
