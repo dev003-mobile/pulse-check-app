@@ -4,4 +4,5 @@ class AppNameRoute {
   static String signInScreen = "/sign_in_screen";
   static String signUpScreen = "/sign_up_screen";
   static String forgotPasswordScreen = "/forgot_password_screen";
+  static String mainScreen = "/main_screen";
 }

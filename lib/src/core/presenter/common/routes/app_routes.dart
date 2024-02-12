@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import 'app_name_route.dart';
+import '../../../../modules/main_module/screens/main_screen.dart';
 import '../../../../modules/initial_module/screens/slide_screen/slide_screen.dart';
 import '../../../../modules/auth_module/screens/sign_up_screen/sign_up_screen.dart';
 import '../../../../modules/auth_module/screens/sign_in_screen/sign_in_screen.dart';
@@ -14,5 +15,6 @@ class AppRoutes {
     GetPage(name: AppNameRoute.signInScreen, page: () => const SignInScreen()),
     GetPage(name: AppNameRoute.signUpScreen, page: () => const SignUpScreen()),
     GetPage(name: AppNameRoute.forgotPasswordScreen, page: () => const ForgotPasswordScreen()),
+    GetPage(name: AppNameRoute.mainScreen, page: () => const MainScreen()),
   ];
 }

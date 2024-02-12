@@ -72,9 +72,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       Gap(size.height * .05),
                       SizedBox(
                         child: ButtonOpacityWidget(
-                          onTap: () { },
                           textButton: AppNameConstant.logInText,
                           provider: buttonSignInSlideStateProvider,
+                          onTap: () => Get.offNamed(AppNameRoute.mainScreen),
                           backgroundColor: AppThemeDesign.defaulTheme.colorScheme.primary,
                         ),
                       ),
