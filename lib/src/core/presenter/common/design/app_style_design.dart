@@ -10,7 +10,8 @@ class AppStyleDesign {
     double? letterSpacing,
     FontWeight? fontWeight,
     TextDecoration? decoration,
-    required BuildContext context
+    final Color? decorationColor,
+    required BuildContext context,
   }) => TextStyle(
     color: color ?? AppThemeDesign.defaulTheme.colorScheme.surface,
     height: height,
@@ -18,6 +19,7 @@ class AppStyleDesign {
     fontFamily: "Inter",
     fontWeight: fontWeight,
     decoration: decoration,
-    letterSpacing: letterSpacing
+    letterSpacing: letterSpacing,
+    decorationColor: decorationColor ?? AppThemeDesign.defaulTheme.colorScheme.onBackground,
   );
 }

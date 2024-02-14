@@ -69,7 +69,7 @@ class BottomNavigationComponent extends ConsumerWidget {
                             backgroundColor: AppThemeDesign.defaulTheme.colorScheme.surface,
                             child: Center(
                               child: Icon(
-                                LucideIcons.plus,
+                                LucideIcons.heartPulse,
                                 color: AppThemeDesign.defaulTheme.colorScheme.primary,
                               ),
                             ),
@@ -85,7 +85,7 @@ class BottomNavigationComponent extends ConsumerWidget {
                       Expanded(
                         flex: 1,
                         child: BoottomItemWidget(
-                          title: "Estatísticas",
+                          title: "Perfil",
                           selected: ref.read(currentIndexProvider.notifier).state == 2,
                           onTap: () {
                             ref.read(currentIndexProvider.notifier).state = 2;
@@ -95,7 +95,7 @@ class BottomNavigationComponent extends ConsumerWidget {
                               curve: Curves.fastEaseInToSlowEaseOut
                             );
                           },
-                          icon: LucideIcons.barChart2,
+                          icon: LucideIcons.user2,
                         ),
                       ),
                     ],

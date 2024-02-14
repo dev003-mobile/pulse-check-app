@@ -26,4 +26,5 @@ class AppNameConstant {
   static String descriptionForgotPasswordText = "Não se preocupe! Isso acontece. Introduza o endereço de correio eletrónico associado à sua conta.";
   static String recoverText = "Recuperar";
   static String applyFilter = "Aplicar filtro";
+  static String closeText = "Fechar";
 }

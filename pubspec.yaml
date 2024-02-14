@@ -9,19 +9,24 @@ environment:
   sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
+  animated_text_kit: ^4.2.2
+  avatar_glow: ^3.0.1
   calendar_date_picker2: ^0.5.3
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   flutter_animate: ^4.5.0
   flutter_launcher_icons: ^0.13.1
+  flutter_localizations:
+    sdk: flutter
   flutter_riverpod: ^2.4.10
   gap: ^3.0.1
   get: ^4.6.6
+  heart_bpm: ^2.0.0+0
+  lottie: ^3.0.0
   lucide_icons: ^0.257.0
   smooth_page_indicator: ^1.1.0
+  torch_light: ^1.0.0
 
 flutter_launcher_icons:
   ios: true
@@ -39,6 +44,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/lottie/
   fonts:
     - family: Inter
       fonts:
