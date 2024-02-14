@@ -64,7 +64,7 @@ class _ButtonOpacityWidgetState extends ConsumerState<ButtonOpacityWidget> {
               width: 1.1,
               color: widget.borderColor ?? AppThemeDesign.defaulTheme.colorScheme.surface
             ),
-            color: widget.isLoading ? AppThemeDesign.defaulTheme.colorScheme.primary : 
+            color: widget.isLoading ? widget.backgroundColor : 
               ref.read(widget.provider.notifier).state ? 
               widget.backgroundColor.withOpacity(.05) : widget.backgroundColor,
           ),

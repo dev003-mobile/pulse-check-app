@@ -1,32 +1,54 @@
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
 
+import '../../_stores/sign_up_store.dart';
+import '../../../../core/domain/entities/user_entity.dart';
 import '../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../core/presenter/common/design/app_theme_design.dart';
-import '../../../../core/presenter/common/widgets/button_opacity_widget.dart';
-import '../../../../core/presenter/common/widgets/button_with_google_widget.dart';
 import '../../../../core/presenter/common/widgets/icon_back_widget.dart';
-import '../../../../core/presenter/common/widgets/row_question_auth_widget.dart';
-import '../../../../core/presenter/common/widgets/sign_in_another_account_widget.dart';
 import '../../../../core/presenter/utils/constants/app_name_constant.dart';
+import '../../../../core/presenter/common/widgets/button_opacity_widget.dart';
 import '../../../../core/presenter/common/widgets/textfield_default_widget.dart';
+import '../../../../core/presenter/common/widgets/row_question_auth_widget.dart';
+import '../../../../core/presenter/common/widgets/button_with_google_widget.dart';
+import '../../../../core/presenter/common/widgets/render_message_info_widget.dart';
 import '../../../../core/presenter/providers/module_providers/sign_up_providers.dart';
+import '../../../../core/presenter/common/widgets/sign_in_another_account_widget.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
-  const SignUpScreen({super.key});
+  SignUpScreen({super.key});
+
+  final SignUpStore _store = GetIt.I.get<SignUpStore>();
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
+  @override
+  void initState() {
+    super.initState();
+    widget._store.emailController = TextEditingController();
+    widget._store.passwordController = TextEditingController();
+    widget._store.confirmPasswordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget._store.emailController.dispose();
+    widget._store.passwordController.dispose();
+    widget._store.confirmPasswordController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     ref.watch(visiblePasswordStateProvider);
+    ref.watch(buttonSignUpIsLoadingStateProvider);
     ref.watch(visibleConfirmPasswordStateProvider);
     return Scaffold(
       body: SafeArea(
@@ -60,9 +82,11 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       Gap(size.height * .06),
                       TextFieldDefaultWidget(
                         hintText: AppNameConstant.emailText,
+                        controller: widget._store.emailController,
                       ),
                       Gap(size.height * .02),
                       TextFieldDefaultWidget(
+                        controller: widget._store.passwordController,
                         obscureText: ref.read(visiblePasswordStateProvider.notifier).state,
                         hintText: AppNameConstant.passwordText,
                         suffixIcon: GestureDetector(
@@ -81,6 +105,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       ),
                       Gap(size.height * .02),
                       TextFieldDefaultWidget(
+                        controller: widget._store.confirmPasswordController,
                         obscureText: ref.read(visibleConfirmPasswordStateProvider.notifier).state,
                         hintText: AppNameConstant.confirmPasswordText,
                         suffixIcon: GestureDetector(
@@ -100,10 +125,56 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       Gap(size.height * .05),
                       SizedBox(
                         child: ButtonOpacityWidget(
-                          onTap: () { },
+                          onTap: () async {
+                            if (widget._store.fieldsIsEmpty()) {
+                              return RenderMessageInfo.render(
+                                context: context, 
+                                size: size.height * .016, 
+                                message: AppNameConstant.fillInTheFields
+                              );
+                            } else if (!widget._store.isEqualsPasswords()) {
+                              return RenderMessageInfo.render(
+                                context: context, 
+                                size: size.height * .016, 
+                                message: AppNameConstant.combinePasswords
+                              );
+                            } else if (!widget._store.isEmailValid()) {
+                              return RenderMessageInfo.render(
+                                context: context, 
+                                size: size.height * .016, 
+                                message: AppNameConstant.enterEmailValid
+                              );
+                            } else {
+                              ref.read(buttonSignUpIsLoadingStateProvider.notifier).state = true;
+                              final user = UserEntity(
+                                email: widget._store.emailController.text,
+                                password: widget._store.passwordController.text
+                              );
+                              await widget._store.signUp(user).then((result) {
+                                result.fold(
+                                  (error) => RenderMessageInfo.render(
+                                    context: context, 
+                                    size: size.height * .016, 
+                                    message: error.toString(),
+                                  ), 
+                                  (r) {
+                                    Get.back();
+                                    return RenderMessageInfo.render(
+                                      context: context, 
+                                      size: size.height * .016, 
+                                      message: AppNameConstant.createdAccount,
+                                      color: AppThemeDesign.defaulTheme.colorScheme.primary
+                                    );
+                                  }
+                                );
+                              });
+                              ref.read(buttonSignUpIsLoadingStateProvider.notifier).state = false;
+                            }
+                           },
                           provider: buttonSignUpStateProvider,
                           textButton: AppNameConstant.createAccountText,
                           backgroundColor: AppThemeDesign.defaulTheme.colorScheme.primary,
+                          isLoading: ref.read(buttonSignUpIsLoadingStateProvider.notifier).state,
                         ),
                       ),
                       Gap(size.height * .035),

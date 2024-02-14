@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "435632076370",
+    "project_id": "pulse-check-1671a",
+    "storage_bucket": "pulse-check-1671a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435632076370:android:d0e7f66c674a060f0fd18b",
+        "android_client_info": {
+          "package_name": "com.example.blood_pressure_measurement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435632076370-nc99k3amei9qk1s4i5uvebv051ccik99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4dOs3lHaRI9EVZxp_w1QgH4RLE1-EDw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435632076370-nc99k3amei9qk1s4i5uvebv051ccik99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

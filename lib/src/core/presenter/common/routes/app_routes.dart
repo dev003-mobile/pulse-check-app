@@ -11,11 +11,11 @@ import '../../../../modules/auth_module/screens/forgot_password_screen/forgot_pa
 
 class AppRoutes {
   static List<GetPage<dynamic>> routes = <GetPage<dynamic>>[
-    GetPage(name: AppNameRoute.splashScreen, page: () => const SplashScreen()),
+    GetPage(name: AppNameRoute.splashScreen, page: () => SplashScreen()),
     GetPage(name: AppNameRoute.slideScreen, page: () => const SlideScreen()),
-    GetPage(name: AppNameRoute.signInScreen, page: () => const SignInScreen()),
-    GetPage(name: AppNameRoute.signUpScreen, page: () => const SignUpScreen()),
-    GetPage(name: AppNameRoute.forgotPasswordScreen, page: () => const ForgotPasswordScreen()),
+    GetPage(name: AppNameRoute.signInScreen, page: () => SignInScreen()),
+    GetPage(name: AppNameRoute.signUpScreen, page: () => SignUpScreen()),
+    GetPage(name: AppNameRoute.forgotPasswordScreen, page: () => ForgotPasswordScreen()),
     GetPage(name: AppNameRoute.mainScreen, page: () => const MainScreen()),
     GetPage(name: AppNameRoute.filterScreen, page: () => const FilterScreen()),
   ];

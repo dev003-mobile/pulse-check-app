@@ -27,4 +27,10 @@ class AppNameConstant {
   static String recoverText = "Recuperar";
   static String applyFilter = "Aplicar filtro";
   static String closeText = "Fechar";
+  static String fillInTheFields = "Preencha os campos!";
+  static String fillInTheField = "Preencha o campo!";
+  static String combinePasswords = "Combine as senhas";
+  static String enterEmailValid = "Informe um e-mail válido";
+  static String createdAccount = "Conta criada✅";
+  static String checkYourMailBox = "verifique sua caixa de email";
 }

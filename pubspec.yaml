@@ -12,7 +12,13 @@ dependencies:
   animated_text_kit: ^4.2.2
   avatar_glow: ^3.0.1
   calendar_date_picker2: ^0.5.3
+  cloud_firestore: ^4.15.4
+  credential_manager: ^0.0.4
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  equatable: ^2.0.5
+  firebase_auth: ^4.17.4
+  firebase_core: ^2.25.4
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
@@ -22,9 +28,12 @@ dependencies:
   flutter_riverpod: ^2.4.10
   gap: ^3.0.1
   get: ^4.6.6
+  get_it: ^7.6.7
+  google_sign_in: ^6.2.1
   heart_bpm: ^2.0.0+0
   lottie: ^3.0.0
   lucide_icons: ^0.257.0
+  shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0
   torch_light: ^1.0.0
 
