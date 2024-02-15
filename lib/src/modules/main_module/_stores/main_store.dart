@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MainStore {
-  late PageController pageController;
+  final PageController pageController;
+
+  MainStore(this.pageController);
 }

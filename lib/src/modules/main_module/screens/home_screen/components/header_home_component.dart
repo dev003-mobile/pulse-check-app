@@ -6,6 +6,7 @@ import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../../core/presenter/common/routes/app_name_route.dart';
 import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
+import '../../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../../core/presenter/utils/constants/app_image_constants.dart';
 
 class HeaderHomeComponent extends StatelessWidget {
@@ -49,7 +50,7 @@ class HeaderHomeComponent extends StatelessWidget {
                         ),
                         SizedBox(
                           child: Text(
-                            "Online",
+                            AppNameConstant.onlineText,
                             style: AppStyleDesign.fontStyleInter(
                               context: context,
                               size: size.height * .014,

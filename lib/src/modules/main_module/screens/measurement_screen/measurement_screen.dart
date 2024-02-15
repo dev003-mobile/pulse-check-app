@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../_stores/measurement_store.dart';
 import 'components/header_measurement_component.dart';
-import 'components/result_bpm_measurement_component.dart';
 import 'components/section_measurement_component.dart';
+import 'components/result_bpm_measurement_component.dart';
 import '../../../../core/presenter/providers/module_providers/measurement_providers.dart';
 
 class MeasurementScreen extends ConsumerStatefulWidget {

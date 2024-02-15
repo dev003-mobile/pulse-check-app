@@ -1,16 +1,19 @@
+import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../_stores/main_store.dart';
 import '../../../../core/presenter/providers/global_providers.dart';
 import '../../../../core/presenter/common/design/app_theme_design.dart';
 import '../../../../core/presenter/common/widgets/bottom_item_widget.dart';
+import '../../../../core/presenter/utils/constants/app_name_constant.dart';
 
 class BottomNavigationComponent extends ConsumerWidget {
-  const BottomNavigationComponent(this._pageController, {super.key});
+  BottomNavigationComponent({super.key});
 
-  final PageController _pageController;
+  final MainStore _store = GetIt.I.get<MainStore>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,11 +39,11 @@ class BottomNavigationComponent extends ConsumerWidget {
                       Expanded(
                         flex: 1,
                         child: BoottomItemWidget(
-                          title: "Medições",
+                          title: AppNameConstant.measurementsText,
                           selected: ref.read(currentIndexProvider.notifier).state == 0,
                           onTap: () {
                             ref.read(currentIndexProvider.notifier).state = 0;
-                            _pageController.animateToPage(
+                            _store.pageController.animateToPage(
                               ref.read(currentIndexProvider.notifier).state, 
                               duration: const Duration(seconds: 1), 
                               curve: Curves.fastEaseInToSlowEaseOut
@@ -57,7 +60,7 @@ class BottomNavigationComponent extends ConsumerWidget {
                           child: FloatingActionButton(
                             onPressed: () {
                               ref.read(currentIndexProvider.notifier).state = 1;
-                              _pageController.animateToPage (
+                              _store.pageController.animateToPage (
                                 ref.read(currentIndexProvider.notifier).state, 
                                 duration: const Duration(seconds: 1), 
                                 curve: Curves.fastEaseInToSlowEaseOut
@@ -85,11 +88,11 @@ class BottomNavigationComponent extends ConsumerWidget {
                       Expanded(
                         flex: 1,
                         child: BoottomItemWidget(
-                          title: "Perfil",
+                          title: AppNameConstant.profileText,
                           selected: ref.read(currentIndexProvider.notifier).state == 2,
                           onTap: () {
                             ref.read(currentIndexProvider.notifier).state = 2;
-                            _pageController.animateToPage(
+                            _store.pageController.animateToPage(
                               ref.read(currentIndexProvider.notifier).state, 
                               duration: const Duration(seconds: 1), 
                               curve: Curves.fastEaseInToSlowEaseOut
@@ -108,7 +111,7 @@ class BottomNavigationComponent extends ConsumerWidget {
               begin: 100,
               curve: Curves.fastEaseInToSlowEaseOut,
               duration: const Duration(milliseconds: 700)
-              ),
+            ),
           ),
         ),
       ),

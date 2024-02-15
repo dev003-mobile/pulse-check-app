@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../_stores/measurement_store.dart';
 import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
+import '../../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../../core/presenter/providers/module_providers/measurement_providers.dart';
 
 class HeaderMeasurementComponent extends ConsumerWidget {
@@ -28,7 +29,7 @@ class HeaderMeasurementComponent extends ConsumerWidget {
               flex: 1,
               child: SizedBox(
                 child: Text(
-                  "Medir",
+                  AppNameConstant.measureText,
                   style: AppStyleDesign.fontStyleInter(
                     context: context,
                     size: size.height * .03,

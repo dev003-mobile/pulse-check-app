@@ -16,7 +16,7 @@ class AppRoutes {
     GetPage(name: AppNameRoute.signInScreen, page: () => SignInScreen()),
     GetPage(name: AppNameRoute.signUpScreen, page: () => SignUpScreen()),
     GetPage(name: AppNameRoute.forgotPasswordScreen, page: () => ForgotPasswordScreen()),
-    GetPage(name: AppNameRoute.mainScreen, page: () => const MainScreen()),
+    GetPage(name: AppNameRoute.mainScreen, page: () => MainScreen()),
     GetPage(name: AppNameRoute.filterScreen, page: () => const FilterScreen()),
   ];
 }

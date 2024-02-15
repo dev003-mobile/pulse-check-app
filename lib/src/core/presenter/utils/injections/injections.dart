@@ -5,6 +5,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../../modules/initial_module/_stores/slide_store.dart';
+import '../../../../modules/main_module/_stores/main_store.dart';
+import '../../../../modules/main_module/_stores/profile_store.dart';
 import '../../../domain/usecases/google_auth_usecase.dart';
 import '../../../domain/usecases/user_sign_in_usecase.dart';
 import '../../../domain/usecases/user_sign_up_usecase.dart';
@@ -50,10 +52,12 @@ class Injections {
     getIt.registerLazySingleton<UserSignOutUseCase>(() => UserSignOutUseCase(getIt()));
     getIt.registerLazySingleton<UserSignUpUseCase>(() => UserSignUpUseCase(getIt()));
 
-    getIt.registerLazySingleton<PageController>(() => PageController());
+    getIt.registerFactory<PageController>(() => PageController());
     getIt.registerLazySingleton<SlideStore>(() => SlideStore(getIt()));
+    getIt.registerLazySingleton<MainStore>(() => MainStore(getIt()));
     getIt.registerFactory<SignUpStore>(() => SignUpStore(getIt()));
     getIt.registerFactory<SplashStore>(() => SplashStore(getIt()));
+    getIt.registerLazySingleton<ProfileStore>(() => ProfileStore(getIt()));
     getIt.registerFactory<SignInStore>(() => SignInStore(getIt(), getIt()));
     getIt.registerFactory<ForgotPasswordStore>(() => ForgotPasswordStore(getIt()));
   }

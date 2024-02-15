@@ -33,4 +33,9 @@ class AppNameConstant {
   static String enterEmailValid = "Informe um e-mail válido";
   static String createdAccount = "Conta criada✅";
   static String checkYourMailBox = "verifique sua caixa de email";
+  static String profileText = "Perfil";
+  static String measurementsText = "Medições";
+  static String onlineText = "Online";
+  static String measureText = "Medir";
+  static String signOutText = "Terminar sessão";
 }
