@@ -13,10 +13,8 @@ import '../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../core/presenter/common/widgets/button_opacity_widget.dart';
 import '../../../../core/presenter/common/widgets/textfield_default_widget.dart';
 import '../../../../core/presenter/common/widgets/row_question_auth_widget.dart';
-import '../../../../core/presenter/common/widgets/button_with_google_widget.dart';
 import '../../../../core/presenter/common/widgets/render_message_info_widget.dart';
 import '../../../../core/presenter/providers/module_providers/sign_up_providers.dart';
-import '../../../../core/presenter/common/widgets/sign_in_another_account_widget.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
   SignUpScreen({super.key});
@@ -157,7 +155,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                                     size: size.height * .016, 
                                     message: error.toString(),
                                   ), 
-                                  (r) {
+                                  (success) {
                                     Get.back();
                                     return RenderMessageInfo.render(
                                       context: context, 
@@ -177,12 +175,6 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           isLoading: ref.read(buttonSignUpIsLoadingStateProvider.notifier).state,
                         ),
                       ),
-                      Gap(size.height * .035),
-                      SignInAnotherAccountWidget(
-                        text: AppNameConstant.signUpAnotherAccountText,
-                      ),
-                      Gap(size.height * .035),
-                      const ButtonWithGoogleWidget()
                     ],
                   ),
                 ),

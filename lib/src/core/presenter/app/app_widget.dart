@@ -19,12 +19,12 @@ class AppWidget extends StatelessWidget {
       defaultTransition: Transition.fadeIn,
       darkTheme: AppThemeDesign.defaulTheme,
       initialRoute: AppNameRoute.splashScreen,
+      transitionDuration: const Duration(milliseconds: 300),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: const [
         Locale('en', ''),
         Locale('pt', ''),
       ],
-      transitionDuration: const Duration(milliseconds: 300),
     );
   }
 }

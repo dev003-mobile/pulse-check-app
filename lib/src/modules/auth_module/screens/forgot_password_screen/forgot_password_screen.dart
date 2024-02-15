@@ -4,7 +4,6 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/presenter/common/widgets/render_message_info_widget.dart';
 import '../../_stores/forgot_password_store.dart';
 import '../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../core/presenter/common/design/app_theme_design.dart';
@@ -12,6 +11,7 @@ import '../../../../core/presenter/common/widgets/icon_back_widget.dart';
 import '../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../core/presenter/common/widgets/button_opacity_widget.dart';
 import '../../../../core/presenter/common/widgets/textfield_default_widget.dart';
+import '../../../../core/presenter/common/widgets/render_message_info_widget.dart';
 import '../../../../core/presenter/providers/module_providers/forgot_password_providers.dart';
 
 class ForgotPasswordScreen extends ConsumerStatefulWidget {
