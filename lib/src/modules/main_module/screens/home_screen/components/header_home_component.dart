@@ -1,16 +1,31 @@
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
+import '../../../_stores/home_store.dart';
 import '../../../../../core/presenter/common/routes/app_name_route.dart';
 import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
 import '../../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../../core/presenter/utils/constants/app_image_constants.dart';
 
-class HeaderHomeComponent extends StatelessWidget {
-  const HeaderHomeComponent({super.key});
+class HeaderHomeComponent extends StatefulWidget {
+  HeaderHomeComponent({super.key});
+
+  final HomeStore _store = GetIt.I.get<HomeStore>();
+
+  @override
+  State<HeaderHomeComponent> createState() => _HeaderHomeComponentState();
+}
+
+class _HeaderHomeComponentState extends State<HeaderHomeComponent> {
+  @override
+  void initState() {
+    super.initState();
+    widget._store.data = widget._store.getUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +54,7 @@ class HeaderHomeComponent extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(
                           child: Text(
-                            "Wagner Coche",
+                            widget._store.data.name ?? "",
                             style: AppStyleDesign.fontStyleInter(
                               context: context,
                               size: size.height * .014,

@@ -20,7 +20,7 @@ class HomeScreen extends ConsumerWidget {
           padding: EdgeInsets.symmetric(horizontal: size.width * .04),
           child: Column(
             children: <Widget>[
-              const HeaderHomeComponent(),
+              HeaderHomeComponent(),
               Gap(size.height * .04),
               const CardDateComponent(),
               Gap(size.height * .02),

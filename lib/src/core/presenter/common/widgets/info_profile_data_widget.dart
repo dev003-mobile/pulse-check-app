@@ -6,7 +6,14 @@ import '../design/app_theme_design.dart';
 import '../../utils/constants/app_image_constants.dart';
 
 class InfoProfileDataWidget extends StatefulWidget {
-  const InfoProfileDataWidget({super.key});
+  const InfoProfileDataWidget({
+    super.key,
+    required this.value,
+    required this.description
+  });
+
+  final String value;
+  final String description;
 
   @override
   State<InfoProfileDataWidget> createState() => _InfoProfileDataWidgetState();
@@ -42,7 +49,7 @@ class _InfoProfileDataWidgetState extends State<InfoProfileDataWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "102",
+                  widget.value,
                   style: AppStyleDesign.fontStyleInter(
                     context: context,
                     size: size.height * .02,
@@ -51,7 +58,7 @@ class _InfoProfileDataWidgetState extends State<InfoProfileDataWidget> {
                   ),
                 ),
                 Text(
-                  "bpm",
+                  widget.description,
                   style: AppStyleDesign.fontStyleInter(
                     context: context,
                     size: size.height * .014,

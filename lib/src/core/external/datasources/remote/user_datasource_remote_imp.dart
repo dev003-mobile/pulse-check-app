@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,7 +32,18 @@ class UserDatasourceRemoteImp implements IUserDatasource {
   Future<String?> getCurrentUserId() async => auth.currentUser?.uid;
 
   @override
-  Future<void> getUpdateUser(UserEntity entity) async { }
+  Future<void> getUpdateUser(UserEntity entity) async { 
+    final CollectionReference<Map<String, dynamic>> userCollection = firestore.collection("users");    
+    if (entity.name != null) await auth.currentUser?.updateDisplayName(entity.name);
+    if (entity.email != null) auth.currentUser?.verifyBeforeUpdateEmail(entity.email!);
+    // if (entity.password != null) await auth.currentUser?.updatePassword(entity.password!);
+
+    final uid = await getCurrentUserId();
+
+    final DocumentSnapshot<Map<String, dynamic>> snapshot = await userCollection.doc(uid).get();
+    final UserDTO userParse = UserDTO.fromJson(snapshot);
+    localStorage.put("user", jsonEncode(userParse.toJson()));
+  }
 
   @override
   Future<Either<Exception, UserCredential>> googleAuth() async { 
@@ -53,11 +66,15 @@ class UserDatasourceRemoteImp implements IUserDatasource {
 
   @override
   Future<Either<Exception, UserCredential>> signIn(SignInEntity signIn) async {
+    final CollectionReference<Map<String, dynamic>> userCollection = firestore.collection("users");
     try {
       final UserCredential userCredential = await auth.signInWithEmailAndPassword(
         email: signIn.email, 
         password: signIn.password
       );
+      final DocumentSnapshot<Map<String, dynamic>> snapshot = await userCollection.doc(userCredential.user?.uid).get();
+      final UserDTO userParse = UserDTO.fromJson(snapshot);
+      localStorage.put("user", jsonEncode(userParse.toJson()));
       return Right(userCredential);
     } on FirebaseAuthException {
       return Left(Exception('Falha ao tentar logar!'));
@@ -74,7 +91,10 @@ class UserDatasourceRemoteImp implements IUserDatasource {
         email: user.email!,
         password: user.password!
       );
-      await getCreateCurrentUser(user.copyWith(uid: userCredential.user?.uid));
+      await getCreateCurrentUser(user.copyWith(
+        name: user.name,
+        uid: userCredential.user?.uid,
+      ));
       return Right(userCredential);
     }  catch (e) {
       return Left(Exception("Reforce a senha ou verifique a conexão!"));

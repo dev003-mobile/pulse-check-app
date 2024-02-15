@@ -16,6 +16,7 @@ class AppNameConstant {
   static String dontHaveAnAccountText = "Não tem uma conta?";
   static String createText = "Criar";
   static String emailText = "E-mail";
+  static String yourNameText = "Seu nome";
   static String passwordText = "Palavra-passe";
   static String titleSignUpText = "Olá! Registre para começar.";
   static String confirmPasswordText = "Confirmar Palavra-passe";
@@ -38,4 +39,7 @@ class AppNameConstant {
   static String onlineText = "Online";
   static String measureText = "Medir";
   static String signOutText = "Terminar sessão";
+  static String updateCredentials = "Actualizar dados";
+  static String totalBPM = "Total bpm";
+  static String fillInTheOneFields = "Preencha um dos campos!";
 }
