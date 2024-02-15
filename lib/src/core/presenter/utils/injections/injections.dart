@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../modules/initial_module/_stores/splash_store.dart';
+import '../../../../modules/initial_module/_stores/slide_store.dart';
 import '../../../domain/usecases/google_auth_usecase.dart';
 import '../../../domain/usecases/user_sign_in_usecase.dart';
 import '../../../domain/usecases/user_sign_up_usecase.dart';
@@ -16,6 +17,7 @@ import '../../../domain/usecases/user_get_current_id_usecase.dart';
 import '../../../../modules/auth_module/_stores/sign_in_store.dart';
 import '../../../../modules/auth_module/_stores/sign_up_store.dart';
 import '../../../domain/usecases/user_forgot_password_usecase.dart';
+import '../../../../modules/initial_module/_stores/splash_store.dart';
 import '../../../domain/usecases/user_get_current_create_usecase.dart';
 import '../../../external/datasources/contracts/i_user_datasource.dart';
 import '../../../external/datasources/local/local_storage_datasource.dart';
@@ -48,6 +50,8 @@ class Injections {
     getIt.registerLazySingleton<UserSignOutUseCase>(() => UserSignOutUseCase(getIt()));
     getIt.registerLazySingleton<UserSignUpUseCase>(() => UserSignUpUseCase(getIt()));
 
+    getIt.registerLazySingleton<PageController>(() => PageController());
+    getIt.registerLazySingleton<SlideStore>(() => SlideStore(getIt()));
     getIt.registerFactory<SignUpStore>(() => SignUpStore(getIt()));
     getIt.registerFactory<SplashStore>(() => SplashStore(getIt()));
     getIt.registerFactory<SignInStore>(() => SignInStore(getIt(), getIt()));

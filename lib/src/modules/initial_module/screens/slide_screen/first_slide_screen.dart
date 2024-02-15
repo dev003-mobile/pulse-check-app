@@ -5,9 +5,7 @@ import 'components/jump_text_component.dart';
 import 'components/first_slide_component/container_info_first_slide_component.dart';
 
 class FirstSlideScreen extends ConsumerWidget {
-  const FirstSlideScreen(this._pageController, {super.key});
-
-  final PageController _pageController;
+  const FirstSlideScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,7 +17,7 @@ class FirstSlideScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             const JumpTextComponent(),
-            ContainerInfoFirstSlideComponent(_pageController),
+            ContainerInfoFirstSlideComponent(),
           ],
         ),
       ),

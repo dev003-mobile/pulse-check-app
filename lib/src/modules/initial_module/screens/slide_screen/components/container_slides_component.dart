@@ -1,25 +1,27 @@
+import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../first_slide_screen.dart';
 import '../third_slide_screen.dart';
 import '../second_slide_screen.dart';
+import '../../../_stores/slide_store.dart';
 
 class ContainerSlidesComponent extends ConsumerWidget {
-  const ContainerSlidesComponent(this._pageController, {super.key});
+  ContainerSlidesComponent({super.key});
 
-  final PageController _pageController;
+  final SlideStore _store = GetIt.I.get<SlideStore>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: PageView(
-        controller: _pageController,
+        controller: _store.pageController,
         physics: const ClampingScrollPhysics(),
-        children: <Widget>[
-          FirstSlideScreen(_pageController),
-          SecondSlideScreen(_pageController),
-          const ThirdSlideScreen(),
+        children: const <Widget>[
+          FirstSlideScreen(),
+          SecondSlideScreen(),
+          ThirdSlideScreen(),
         ],
       ),
     );
