@@ -104,6 +104,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                                 message: AppNameConstant.fillInTheFields
                               );
                             } else {
+                              FocusScope.of(context).unfocus();
                               ref.read(buttonSignInIsLoadingStateProvider.notifier).state = true;
                               final SignInEntity data = SignInEntity(
                                 email: widget._store.emailController.text,
@@ -148,7 +149,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 RowQuestionAuthWidget(
                   actionText: AppNameConstant.createText,
                   question: AppNameConstant.dontHaveAnAccountText,
-                  onTap: () => Get.toNamed(AppNameRoute.signUpScreen),
+                  onTap: () => Get.offNamed(AppNameRoute.signUpScreen),
                 )
               ],
             ),

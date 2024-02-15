@@ -5,17 +5,19 @@ import '../design/app_theme_design.dart';
 
 class RenderMessageInfo {
   static render({
-    required BuildContext context, 
     Color? color,
     Color? fontColor,
-    required double size,
     Duration? duration,
-    DismissDirection? dismissDirection, 
-    SnackBarAction? snackBarAction,
+    required double size,
+    required String message,
+    SnackBarBehavior? behavior, 
     Animation<double>? animation,
-    required String message
+    required BuildContext context, 
+    SnackBarAction? snackBarAction,
+    DismissDirection? dismissDirection,
   }) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      behavior: behavior,
       dismissDirection: dismissDirection ?? DismissDirection.horizontal,
       backgroundColor: color ?? AppThemeDesign.defaulTheme.colorScheme.error,
       duration: duration ?? const Duration(seconds: 2),

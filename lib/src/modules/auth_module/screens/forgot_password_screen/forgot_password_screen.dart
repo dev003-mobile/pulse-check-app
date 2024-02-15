@@ -93,6 +93,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                         message: AppNameConstant.enterEmailValid
                       );
                     } else {
+                      FocusScope.of(context).unfocus();
                       ref.read(buttonForgotPasswordIsLoadingStateProvider.notifier).state = true;
                       await widget._store.forgotPassword(widget._store.emailController.text).then((_) {
                         Get.back();

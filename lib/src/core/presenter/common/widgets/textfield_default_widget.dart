@@ -11,11 +11,13 @@ class TextFieldDefaultWidget extends ConsumerWidget {
     this.suffixIcon,
     this.keyboardType,
     this.hintTextColor,
+    this.readOnly = false,
     required this.hintText,
     this.obscureText = false,
     this.obscuringCharacter = "•",
   });
 
+  final bool readOnly;
   final String hintText;
   final bool obscureText;
   final Widget? suffixIcon;
@@ -29,6 +31,7 @@ class TextFieldDefaultWidget extends ConsumerWidget {
     Size size = MediaQuery.sizeOf(context);
     return  SizedBox(
       child: TextField(
+        readOnly: readOnly,
         controller: controller,
         enableSuggestions: true,
         obscureText: obscureText,

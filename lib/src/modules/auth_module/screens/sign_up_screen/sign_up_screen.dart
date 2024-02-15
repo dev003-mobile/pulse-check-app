@@ -1,3 +1,4 @@
+import 'package:blood_pressure_measurement/src/core/presenter/common/routes/app_name_route.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -30,6 +31,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   void initState() {
     super.initState();
     widget._store.emailController = TextEditingController();
+    widget._store.yourNameController = TextEditingController();
     widget._store.passwordController = TextEditingController();
     widget._store.confirmPasswordController = TextEditingController();
   }
@@ -38,6 +40,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   void dispose() {
     super.dispose();
     widget._store.emailController.dispose();
+    widget._store.yourNameController.dispose();
     widget._store.passwordController.dispose();
     widget._store.confirmPasswordController.dispose();
   }
@@ -78,6 +81,11 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         ),
                       ),
                       Gap(size.height * .06),
+                      TextFieldDefaultWidget(
+                        hintText: AppNameConstant.yourNameText,
+                        controller: widget._store.yourNameController,
+                      ),
+                      Gap(size.height * .02),
                       TextFieldDefaultWidget(
                         hintText: AppNameConstant.emailText,
                         controller: widget._store.emailController,
@@ -143,9 +151,11 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                                 message: AppNameConstant.enterEmailValid
                               );
                             } else {
+                              FocusScope.of(context).unfocus();
                               ref.read(buttonSignUpIsLoadingStateProvider.notifier).state = true;
                               final user = UserEntity(
                                 email: widget._store.emailController.text,
+                                name: widget._store.yourNameController.text,
                                 password: widget._store.passwordController.text
                               );
                               await widget._store.signUp(user).then((result) {
@@ -180,9 +190,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 ),
                 Gap(size.height * .1),
                 RowQuestionAuthWidget(
-                  onTap: () => Get.back(),
                   actionText: AppNameConstant.logInText,
                   question: AppNameConstant.haveAnAccountText,
+                  onTap: () => Get.offNamed(AppNameRoute.signInScreen),
                 )
               ],
             ),

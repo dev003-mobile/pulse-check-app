@@ -17,6 +17,6 @@ class SignInStore {
 
   bool fieldsIsEmpty() => emailController.text.isEmpty || passwordController.text.isEmpty;
 
-  Future<Either<Exception, UserCredential>> signIn(SignInEntity signIn) => _signInUseCase(signIn);
-  Future<Either<Exception, UserCredential>> signInWithGoogle() => _googleAuthUseCase();
+  Future<Either<Exception, UserCredential>> signIn(SignInEntity signIn) async => await _signInUseCase(signIn);
+  Future<Either<Exception, UserCredential>> signInWithGoogle() async => await _googleAuthUseCase();
 }
