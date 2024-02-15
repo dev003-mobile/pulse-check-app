@@ -20,7 +20,7 @@ class UserRepositoryImp implements IUserRepository {
   Future<void> getUpdateUser(UserEntity entity) async => _iUserDatasource.getUpdateUser(entity);
 
   @override
-  Future<void> googleAuth() async => _iUserDatasource.googleAuth();
+  Future<Either<Exception, UserCredential>> googleAuth() async => _iUserDatasource.googleAuth();
 
   @override
   Future<bool> isSignIn() => _iUserDatasource.isSignIn();

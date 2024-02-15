@@ -33,7 +33,20 @@ class UserDatasourceRemoteImp implements IUserDatasource {
   Future<void> getUpdateUser(UserEntity entity) async { }
 
   @override
-  Future<void> googleAuth() async { }
+  Future<Either<Exception, UserCredential>> googleAuth() async { 
+    try {
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken
+      );
+      final UserCredential userCredential = await auth.signInWithCredential(credential);
+      return Right(userCredential);
+    } catch (e) {
+      return Left(Exception("Falha ao tentar logar!"));
+    }
+  }
 
   @override
   Future<bool> isSignIn() async => auth.currentUser?.uid != null;
@@ -45,7 +58,6 @@ class UserDatasourceRemoteImp implements IUserDatasource {
         email: signIn.email, 
         password: signIn.password
       );
-      await localStorage.put("token", userCredential.user!.uid);
       return Right(userCredential);
     } on FirebaseAuthException {
       return Left(Exception('Falha ao tentar logar!'));

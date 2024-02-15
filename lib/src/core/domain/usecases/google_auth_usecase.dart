@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../repositories/i_user_repository.dart';
 
 class GoogleAuthUseCase {
@@ -5,5 +8,5 @@ class GoogleAuthUseCase {
 
   GoogleAuthUseCase(this._iUserRepository);
 
-  Future<void> call() async => _iUserRepository.googleAuth();
+  Future<Either<Exception, UserCredential>> call() async => _iUserRepository.googleAuth();
 }

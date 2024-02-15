@@ -1,9 +1,9 @@
-import 'package:blood_pressure_measurement/src/core/external/datasources/local/local_storage_datasource.dart';
+import '../../../core/domain/usecases/user_is_sign_in_usecase.dart';
 
 class SplashStore {
-  final LocalStorageDatasource _localStorageDatasource;
+  final UserIsSignInUseCase _isSignInUseCase;
 
-  SplashStore(this._localStorageDatasource);
+  SplashStore(this._isSignInUseCase);
 
-  Future<String?> getToken(String key) async => await _localStorageDatasource.get(key);
+  Future<bool> isLogged() async => await _isSignInUseCase();
 }

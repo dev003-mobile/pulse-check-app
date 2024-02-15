@@ -48,9 +48,9 @@ class Injections {
     getIt.registerLazySingleton<UserSignOutUseCase>(() => UserSignOutUseCase(getIt()));
     getIt.registerLazySingleton<UserSignUpUseCase>(() => UserSignUpUseCase(getIt()));
 
-    getIt.registerFactory<SignInStore>(() => SignInStore(getIt()));
     getIt.registerFactory<SignUpStore>(() => SignUpStore(getIt()));
     getIt.registerFactory<SplashStore>(() => SplashStore(getIt()));
+    getIt.registerFactory<SignInStore>(() => SignInStore(getIt(), getIt()));
     getIt.registerFactory<ForgotPasswordStore>(() => ForgotPasswordStore(getIt()));
   }
 }

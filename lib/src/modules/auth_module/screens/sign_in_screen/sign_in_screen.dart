@@ -4,10 +4,10 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/domain/entities/sign_in_entity.dart';
 import '../../_stores/sign_in_store.dart';
 import 'components/title_welcome_component.dart';
 import 'components/text_forgot_password_component.dart';
+import '../../../../core/domain/entities/sign_in_entity.dart';
 import '../../../../core/presenter/common/routes/app_name_route.dart';
 import '../../../../core/presenter/common/design/app_theme_design.dart';
 import '../../../../core/presenter/utils/constants/app_name_constant.dart';
@@ -129,7 +129,18 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       Gap(size.height * .035),
                       const SignInAnotherAccountWidget(),
                       Gap(size.height * .035),
-                      const ButtonWithGoogleWidget()
+                      ButtonWithGoogleWidget(
+                        onTap: () async => await widget._store.signInWithGoogle().then((result) {
+                          result.fold(
+                            (error) => RenderMessageInfo.render(
+                              context: context, 
+                              size: size.height * .016, 
+                              message: error.toString()
+                            ), 
+                            (success) => Get.offNamed(AppNameRoute.mainScreen)
+                          );
+                        }),
+                      )
                     ],
                   ),
                 ),
