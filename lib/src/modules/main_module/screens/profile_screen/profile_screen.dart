@@ -77,6 +77,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 ),
                 Gap(size.height * .04),
                 TextFieldDefaultWidget(
+                  readOnly: true,
                   hintText: widget._store.data.uid ?? "",
                 ),
               ],
