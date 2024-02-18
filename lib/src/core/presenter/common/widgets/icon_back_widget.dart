@@ -5,7 +5,9 @@ import '../routes/app_name_route.dart';
 import '../design/app_theme_design.dart';
 
 class IconBackWidget extends StatelessWidget {
-  const IconBackWidget({super.key});
+  const IconBackWidget({super.key, this.onTap});
+
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class IconBackWidget extends StatelessWidget {
         height: size.height * .045,
         width: size.width * .09,
         child: InkWell(
-          onTap: () => Get.offNamed(AppNameRoute.signInScreen),
+          onTap: onTap ?? () => Get.offNamed(AppNameRoute.signInScreen),
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           child: Icon(
             Icons.arrow_back_ios,

@@ -1,20 +1,26 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:torch_light/torch_light.dart';
 
 import '../../../core/domain/entities/user_entity.dart';
 import '../../../core/domain/entities/blood_pressuse_entity.dart';
-import '../../../core/external/datasources/local/current_date_local_datasource.dart';
 import '../../../core/external/datasources/local/local_storage_datasource.dart';
+import '../../../core/external/datasources/local/current_date_local_datasource.dart';
 import '../../../core/domain/usecases/blood_pressure_usecases/create_measurement_usecase.dart';
+import '../../../core/domain/usecases/blood_pressure_usecases/delete_measurement_usecase.dart';
 
 class MeasurementStore {
   final LocalStorageDatasource _storageDatasource;
   final CurrentDateLocalDatasource _dateLocalDatasource;
   final CreateMeasurementUseCase _createMeasurementUseCase;
+  final DeleteMeasurementUseCase _deleteMeasurementUseCase;
 
-  MeasurementStore(this._storageDatasource, this._createMeasurementUseCase, this._dateLocalDatasource);
+  MeasurementStore(
+    this._storageDatasource, this._createMeasurementUseCase, 
+    this._dateLocalDatasource, this._deleteMeasurementUseCase
+  );
 
   Future<void> enableTorch() async {
     try {
@@ -44,4 +50,5 @@ class MeasurementStore {
   String getCurrentDescriptionDate() => _dateLocalDatasource.getDescriptionDate();
   
   Future<BloodPressureEntity> createMeasurement(BloodPressureEntity bloodPressureEntity) async => await _createMeasurementUseCase(bloodPressureEntity);
+  Future<Either<Exception, bool>> deleteMeasurement(String pk) async => await _deleteMeasurementUseCase(pk);
 }

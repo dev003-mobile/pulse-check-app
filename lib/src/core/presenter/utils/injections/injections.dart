@@ -89,7 +89,7 @@ class Injections {
     getIt.registerLazySingleton<SignInStore>(() => SignInStore(getIt(), getIt()));
     getIt.registerLazySingleton<HomeStore>(() => HomeStore(getIt(), getIt()));
     getIt.registerLazySingleton<ForgotPasswordStore>(() => ForgotPasswordStore(getIt()));
-    getIt.registerLazySingleton<MeasurementStore>(() => MeasurementStore(getIt(), getIt(), getIt()));
+    getIt.registerLazySingleton<MeasurementStore>(() => MeasurementStore(getIt(), getIt(), getIt(), getIt()));
     getIt.registerLazySingleton<ProfileStore>(() => ProfileStore(getIt(), getIt(), getIt(), getIt(), getIt()));
   }
 }

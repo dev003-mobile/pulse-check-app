@@ -6,4 +6,5 @@ class AppNameRoute {
   static String forgotPasswordScreen = "/forgot_password_screen";
   static String mainScreen = "/main_screen";
   static String filterScreen = "/filter_screen";
+  static String measurementDetailsScreen = "/measurement_details_screen";
 }

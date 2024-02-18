@@ -13,6 +13,9 @@ class AppThemeDesign {
       onBackground: Color(0XFF8391A1),
       onPrimary: Color(0XFF4F4F4F),
       onSecondary: Color(0XFF9C9898),
+      primaryContainer: Color(0xFFACDAFF),
+      secondaryContainer: Color(0xFFA8FF9B),
+      tertiaryContainer: Color(0xFFFF1313),
       error: Color(0xFFE73959),
     )
   );

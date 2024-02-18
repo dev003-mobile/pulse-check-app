@@ -6,4 +6,6 @@ final isPressFlashStateProvider = StateProvider<bool>((ref) => true);
 final isMeasuringStateProvider = StateProvider<bool>((ref) => false);
 final showDialogShownStateProvider = StateProvider<bool>((ref) => false);
 final buttonCloseModalStateProvider = StateProvider<bool>((ref) => false);
+final buttonDeleteMeasurementStateProvider = StateProvider<bool>((ref) => false);
+final buttonDeleteMeasurementIsLoadingStateProvider = StateProvider<bool>((ref) => false);
 final dataHearthBPMStateProvider = StateProvider<List<SensorValue>>((ref) => []);

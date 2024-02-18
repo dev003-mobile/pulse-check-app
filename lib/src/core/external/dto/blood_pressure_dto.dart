@@ -2,6 +2,7 @@ import '../../domain/entities/blood_pressuse_entity.dart';
 
 class BloodPressureDTO extends BloodPressureEntity {
   BloodPressureDTO({
+    super.id,
     required super.unity, 
     required super.userId, 
     required super.measurementTime, 
@@ -12,6 +13,7 @@ class BloodPressureDTO extends BloodPressureEntity {
 
   factory BloodPressureDTO.fromJson(Map<String, dynamic> json) {
     return BloodPressureDTO(
+      id: json["id"],
       unity: json["unit"],
       userId: json["user_id"],
       measurementTime: json["measurement_time"],
@@ -23,6 +25,7 @@ class BloodPressureDTO extends BloodPressureEntity {
 
   Map<String, dynamic> toJson() {
     return {
+      "id": super.id,
       "unit": super.unity, 
       "user_id": super.userId, 
       "measurement_time": super.measurementTime, 

@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 
 class UserEntity extends Equatable {
+  final String? id;
   final String? name;
   final String? email;
   final String? uid;
@@ -10,6 +11,7 @@ class UserEntity extends Equatable {
   final String? password;
 
   const UserEntity({
+    this.id,
     this.name, 
     this.email, 
     this.uid, 
@@ -20,6 +22,7 @@ class UserEntity extends Equatable {
   
   factory UserEntity.fromJson(Map<String, dynamic> json) {
     return UserEntity(
+      id: json["id"],
       name: json["name"],
       email: json["email"],
       uid: json["uid"],
@@ -31,6 +34,7 @@ class UserEntity extends Equatable {
 
   Map<String, dynamic> toJson() {
     return {
+      "id": id,
       "name": name, 
       "email": email, 
       "uid": uid, 
@@ -47,6 +51,7 @@ class UserEntity extends Equatable {
   ];
 
   UserEntity copyWith({
+    String? id,
     String? name,
     String? email,
     String? uid,
@@ -55,6 +60,7 @@ class UserEntity extends Equatable {
     String? password,
   }) {
     return UserEntity(
+      id: id ?? this.id,
       name: name ?? this.name,
       email: email ?? this.email,
       uid: uid ?? this.uid,

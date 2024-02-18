@@ -1,4 +1,5 @@
 class BloodPressureEntity {
+  final String? id;
   final String unity;
   final String userId;
   final int measurementValue;
@@ -7,6 +8,7 @@ class BloodPressureEntity {
   final String measurementDescriptionDate;
 
   BloodPressureEntity({
+    this.id,
     required this.unity,
     required this.userId,
     required this.measurementTime,
