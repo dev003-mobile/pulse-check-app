@@ -6,7 +6,8 @@ class BloodPressureDTO extends BloodPressureEntity {
     required super.userId, 
     required super.measurementTime, 
     required super.measurementDate, 
-    required super.measurementValue
+    required super.measurementValue,
+    required super.measurementDescriptionDate
   });
 
   factory BloodPressureDTO.fromJson(Map<String, dynamic> json) {
@@ -15,7 +16,8 @@ class BloodPressureDTO extends BloodPressureEntity {
       userId: json["user_id"],
       measurementTime: json["measurement_time"],
       measurementDate: json["measurement_date"],
-      measurementValue: json["measurement_value"]
+      measurementValue: json["measurement_value"],
+      measurementDescriptionDate: json["measurement_description_date"]
     );
   }
 
@@ -26,6 +28,7 @@ class BloodPressureDTO extends BloodPressureEntity {
       "measurement_time": super.measurementTime, 
       "measurement_date": super.measurementDate, 
       "measurement_value": super.measurementValue, 
+      "measurement_description_date": super.measurementDescriptionDate
     };
   }
 }

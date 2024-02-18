@@ -8,6 +8,8 @@ import '../../../domain/entities/user_entity.dart';
 import '../../../domain/repositories/i_user_repository.dart';
 import '../../../../modules/main_module/_stores/main_store.dart';
 import '../../../../modules/main_module/_stores/home_store.dart';
+import '../../../domain/usecases/blood_pressure_usecases/get_count_measurement_usecase.dart';
+import '../../../domain/usecases/blood_pressure_usecases/get_total_bpm_usecase.dart';
 import '../../../external/datasources/local/current_date_local_datasource.dart';
 import '../../../external/repositories/user_repository_imp.dart';
 import '../../../../modules/main_module/_stores/profile_store.dart';
@@ -66,6 +68,7 @@ class Injections {
     getIt.registerLazySingleton<GoogleAuthUseCase>(() => GoogleAuthUseCase(getIt()));
     getIt.registerLazySingleton<UserSignInUseCase>(() => UserSignInUseCase(getIt()));
     getIt.registerLazySingleton<UserSignUpUseCase>(() => UserSignUpUseCase(getIt()));
+    getIt.registerLazySingleton<GetTotalBPMUseCase>(() => GetTotalBPMUseCase(getIt()));
     getIt.registerLazySingleton<UserSignOutUseCase>(() => UserSignOutUseCase(getIt()));
     getIt.registerLazySingleton<UserIsSignInUseCase>(() => UserIsSignInUseCase(getIt()));
     getIt.registerLazySingleton<UserGetUpdateUseCase>(() => UserGetUpdateUseCase(getIt()));
@@ -73,6 +76,7 @@ class Injections {
     getIt.registerLazySingleton<CreateMeasurementUseCase>(() => CreateMeasurementUseCase(getIt()));
     getIt.registerLazySingleton<DeleteMeasurementUseCase>(() => DeleteMeasurementUseCase(getIt()));
     getIt.registerLazySingleton<GetAllMeasurementUseCase>(() => GetAllMeasurementUseCase(getIt()));
+    getIt.registerLazySingleton<GetCountMeasurementUseCase>(() => GetCountMeasurementUseCase(getIt()));
     getIt.registerLazySingleton<UserForgotPasswordUseCase>(() => UserForgotPasswordUseCase(getIt()));
     getIt.registerLazySingleton<UserGetCurrentCreateUseCase>(() => UserGetCurrentCreateUseCase(getIt()));
 
@@ -85,7 +89,7 @@ class Injections {
     getIt.registerLazySingleton<SignInStore>(() => SignInStore(getIt(), getIt()));
     getIt.registerLazySingleton<HomeStore>(() => HomeStore(getIt(), getIt()));
     getIt.registerLazySingleton<ForgotPasswordStore>(() => ForgotPasswordStore(getIt()));
-    getIt.registerLazySingleton<ProfileStore>(() => ProfileStore(getIt(), getIt(), getIt()));
     getIt.registerLazySingleton<MeasurementStore>(() => MeasurementStore(getIt(), getIt(), getIt()));
+    getIt.registerLazySingleton<ProfileStore>(() => ProfileStore(getIt(), getIt(), getIt(), getIt(), getIt()));
   }
 }

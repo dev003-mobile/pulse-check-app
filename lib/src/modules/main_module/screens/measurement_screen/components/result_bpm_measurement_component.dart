@@ -41,7 +41,8 @@ class _ResultBPMMeasurementComponentState extends ConsumerState<ResultBPMMeasure
           unity: "bpm", 
           userId: widget._store.data!.uid!, 
           measurementTime: widget._store.getCurrentTime(), 
-          measurementDate: widget._store.getCurrentDescriptionDate(), 
+          measurementDate: widget._store.getCurrentDate(),
+          measurementDescriptionDate: widget._store.getCurrentDescriptionDate(), 
           measurementValue: ref.read(bpmHearthBPMStateProvider.notifier).state
         ));
         if (mounted) {
