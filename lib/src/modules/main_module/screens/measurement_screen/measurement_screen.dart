@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../_stores/measurement_store.dart';
 import 'components/header_measurement_component.dart';
 import 'components/section_measurement_component.dart';
 import 'components/result_bpm_measurement_component.dart';
@@ -15,8 +14,6 @@ class MeasurementScreen extends ConsumerStatefulWidget {
 }
 
 class _MeasurementScreenState extends ConsumerState<MeasurementScreen> {
-  final MeasurementStore _store = MeasurementStore();
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -29,11 +26,11 @@ class _MeasurementScreenState extends ConsumerState<MeasurementScreen> {
             visible: ref.read(isMeasuringStateProvider.notifier).state,
             replacement: Column(
               children: <Widget>[
-                HeaderMeasurementComponent(_store),
+                HeaderMeasurementComponent(),
                 const SectionMeasurementComponent()
               ],
             ),
-            child: const ResultBPMMeasurementComponent()
+            child: ResultBPMMeasurementComponent()
           ),
         )
       ),

@@ -29,7 +29,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           controller: widget._store.pageController,
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
-            const HomeScreen(),
+            HomeScreen(),
             const MeasurementScreen(),
             ProfileScreen(),
           ],

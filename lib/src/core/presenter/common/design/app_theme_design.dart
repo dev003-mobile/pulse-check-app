@@ -11,6 +11,8 @@ class AppThemeDesign {
       surface: Color(0XFFFFFFFF),
       background: Color(0XFF000000),
       onBackground: Color(0XFF8391A1),
+      onPrimary: Color(0XFF4F4F4F),
+      onSecondary: Color(0XFF9C9898),
       error: Color(0xFFE73959),
     )
   );

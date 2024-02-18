@@ -19,7 +19,7 @@
             "name": "blood_pressure_measurement (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
         }
     ]
 }

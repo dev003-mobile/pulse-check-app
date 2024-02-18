@@ -1,4 +1,4 @@
-import '../repositories/i_user_repository.dart';
+import '../../repositories/i_user_repository.dart';
 
 class UserSignOutUseCase {
   final IUserRepository _iUserRepository;

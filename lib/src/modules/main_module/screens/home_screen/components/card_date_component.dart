@@ -6,9 +6,12 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
 import '../../../../../core/presenter/utils/constants/app_image_constants.dart';
+import '../../../../../core/external/datasources/local/current_date_local_datasource.dart';
 
 class CardDateComponent extends StatelessWidget {
-  const CardDateComponent({super.key});
+  CardDateComponent({super.key});
+
+  final CurrentDateLocalDatasource _currentDate = CurrentDateLocalDatasource();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,7 @@ class CardDateComponent extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(
                         child: Text(
-                          "FEB",
+                          _currentDate.monthAbbreviation(),
                           style: AppStyleDesign.fontStyleInter(
                             context: context,
                             size: size.height * .03,
@@ -44,7 +47,7 @@ class CardDateComponent extends StatelessWidget {
                       Gap(size.height * .005),
                       SizedBox(
                         child: Text(
-                          "Fevereiro, 12 de 2024",
+                          _currentDate.getDescriptionDate(),
                           style: AppStyleDesign.fontStyleInter(
                             context: context,
                             size: size.height * .014,

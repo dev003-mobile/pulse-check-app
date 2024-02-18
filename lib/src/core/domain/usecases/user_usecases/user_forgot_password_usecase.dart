@@ -1,4 +1,4 @@
-import '../repositories/i_user_repository.dart';
+import '../../repositories/i_user_repository.dart';
 
 class UserForgotPasswordUseCase {
   final IUserRepository _iUserRepository;

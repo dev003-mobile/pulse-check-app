@@ -27,7 +27,7 @@ class SectionMeasurementComponent extends ConsumerWidget {
             Gap(size.height * .04),
             SizedBox(
               child: Text(
-                "Faça agora a sua primeira medição\nagora!",
+                "Faça a medição a ser registrada\nagora!",
                 textAlign: TextAlign.center,
                 style: AppStyleDesign.fontStyleInter(
                   context: context,

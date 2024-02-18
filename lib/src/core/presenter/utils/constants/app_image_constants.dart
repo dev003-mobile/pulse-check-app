@@ -7,4 +7,5 @@ class AppImageConstants {
   static String meImage = "assets/images/me.jpg";
   static String formImage = "assets/images/form-min.png";
   static String verifyImage = "assets/images/verify-min.png";
+  static String infoImage = "assets/images/info-min.png";
 }

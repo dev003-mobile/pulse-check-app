@@ -31,9 +31,12 @@ dependencies:
   get_it: ^7.6.7
   google_sign_in: ^6.2.1
   heart_bpm: ^2.0.0+0
+  http: ^1.2.0
+  intl: ^0.18.1
   lottie: ^3.0.0
   lucide_icons: ^0.257.0
   shared_preferences: ^2.2.2
+  shimmer: ^3.0.0
   smooth_page_indicator: ^1.1.0
   torch_light: ^1.0.0
 

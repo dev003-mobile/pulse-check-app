@@ -36,7 +36,6 @@ class UserDatasourceRemoteImp implements IUserDatasource {
     final CollectionReference<Map<String, dynamic>> userCollection = firestore.collection("users");    
     if (entity.name != null) await auth.currentUser?.updateDisplayName(entity.name);
     if (entity.email != null) auth.currentUser?.verifyBeforeUpdateEmail(entity.email!);
-    // if (entity.password != null) await auth.currentUser?.updatePassword(entity.password!);
 
     final uid = await getCurrentUserId();
 

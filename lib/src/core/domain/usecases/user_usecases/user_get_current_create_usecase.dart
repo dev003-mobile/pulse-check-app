@@ -1,5 +1,5 @@
-import '../entities/user_entity.dart';
-import '../repositories/i_user_repository.dart';
+import '../../entities/user_entity.dart';
+import '../../repositories/i_user_repository.dart';
 
 class UserGetCurrentCreateUseCase {
   final IUserRepository _iUserRepository;

@@ -1,3 +1,4 @@
+import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,9 +10,9 @@ import '../../../../../core/presenter/utils/constants/app_name_constant.dart';
 import '../../../../../core/presenter/providers/module_providers/measurement_providers.dart';
 
 class HeaderMeasurementComponent extends ConsumerWidget {
-  const HeaderMeasurementComponent(this._store, {super.key});
+  HeaderMeasurementComponent({super.key});
 
-  final MeasurementStore _store;
+  final MeasurementStore _store = GetIt.I.get<MeasurementStore>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
