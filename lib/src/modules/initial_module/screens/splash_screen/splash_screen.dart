@@ -22,14 +22,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 4), () {
-      widget._store.isLogged().then((isLogged) {
+      widget._store.isLogged().then((isLogged) async {
         if (isLogged) {
           if (mounted) Get.offNamed(AppNameRoute.mainScreen);
         } else {
           if (mounted) Get.offNamed(AppNameRoute.slideScreen);
         }
       });
-    });
+    }); 
   }
 
   @override

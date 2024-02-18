@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../core/domain/entities/sign_in_entity.dart';
-import '../../../core/domain/usecases/google_auth_usecase.dart';
-import '../../../core/domain/usecases/user_sign_in_usecase.dart';
+import '../../../core/domain/usecases/user_usecases/google_auth_usecase.dart';
+import '../../../core/domain/usecases/user_usecases/user_sign_in_usecase.dart';
 
 class SignInStore {
   final UserSignInUseCase _signInUseCase;

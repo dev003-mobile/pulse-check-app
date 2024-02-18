@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../core/domain/entities/user_entity.dart';
-import '../../../core/domain/usecases/user_sign_up_usecase.dart';
+import '../../../core/domain/usecases/user_usecases/user_sign_up_usecase.dart';
 
 class SignUpStore {
   final UserSignUpUseCase _signUpUseCase;

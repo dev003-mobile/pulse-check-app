@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/domain/usecases/user_forgot_password_usecase.dart';
+import '../../../core/domain/usecases/user_usecases/user_forgot_password_usecase.dart';
 
 class ForgotPasswordStore {
   final UserForgotPasswordUseCase _forgotPasswordUseCase;

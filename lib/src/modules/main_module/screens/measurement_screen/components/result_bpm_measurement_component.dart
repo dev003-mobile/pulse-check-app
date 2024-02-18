@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:heart_bpm/heart_bpm.dart';
@@ -11,15 +11,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
+import 'show_modal_result_component.dart';
+import '../../../_stores/measurement_store.dart';
+import '../../../../../core/presenter/providers/global_providers.dart';
+import '../../../../../core/domain/entities/blood_pressuse_entity.dart';
 import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
-import '../../../../../core/presenter/common/widgets/button_opacity_widget.dart';
-import '../../../../../core/presenter/providers/global_providers.dart';
 import '../../../../../core/presenter/providers/module_providers/measurement_providers.dart';
-import '../../../../../core/presenter/utils/constants/app_name_constant.dart';
 
 class ResultBPMMeasurementComponent extends ConsumerStatefulWidget {
-  const ResultBPMMeasurementComponent({super.key});
+  ResultBPMMeasurementComponent({super.key});
+
+
+  final MeasurementStore _store = GetIt.I.get<MeasurementStore>();
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ResultBPMMeasurementComponentState();
@@ -29,76 +33,22 @@ class _ResultBPMMeasurementComponentState extends ConsumerState<ResultBPMMeasure
   @override
   void initState() {
     super.initState();
+    widget._store.data = widget._store.getUser();
     scheduleMicrotask(() {
-      Future.delayed(const Duration(seconds: 20), () {
+      Future.delayed(const Duration(seconds: 10), () {
         ref.read(isMeasuringStateProvider.notifier).state = false;
+        widget._store.createMeasurement(BloodPressureEntity(
+          unity: "bpm", 
+          userId: widget._store.data!.uid!, 
+          measurementTime: widget._store.getCurrentTime(), 
+          measurementDate: widget._store.getCurrentDescriptionDate(), 
+          measurementValue: ref.read(bpmHearthBPMStateProvider.notifier).state
+        ));
         if (mounted) {
           return showModalBottomSheet(
             context: context, 
             isDismissible: false,
-            builder: (_) => Material(
-              color: AppThemeDesign.defaulTheme.colorScheme.surface,
-              child: SizedBox(
-                width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height * .3,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width * .04),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height * .02),
-                        child: Text(
-                          "Resultado",
-                          style: AppStyleDesign.fontStyleInter(
-                            context: context,
-                            size: MediaQuery.sizeOf(context).height * .04, 
-                            fontWeight: FontWeight.w600,
-                            color: AppThemeDesign.defaulTheme.colorScheme.background
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .02),
-                      SizedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              ref.read(bpmHearthBPMStateProvider.notifier).state.toString(),
-                              textAlign: TextAlign.center,
-                              style: AppStyleDesign.fontStyleInter(
-                                context: context,
-                                fontWeight: FontWeight.w500,
-                                size: MediaQuery.sizeOf(context).height * .05, 
-                                color: AppThemeDesign.defaulTheme.colorScheme.background
-                              ),
-                            ),
-                            Gap(MediaQuery.sizeOf(context).width * .03),
-                            Icon(
-                              LucideIcons.heartPulse,
-                              size: MediaQuery.sizeOf(context).height * .05,
-                              color: AppThemeDesign.defaulTheme.colorScheme.primary,
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: MediaQuery.sizeOf(context).height * .02),
-                      SizedBox(
-                        child: Padding(
-                          padding: EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height * .02),
-                          child: ButtonOpacityWidget(
-                            onTap: () => Get.back(),
-                            provider: buttonCloseModalStateProvider,
-                            textButton: AppNameConstant.closeText,
-                            backgroundColor: AppThemeDesign.defaulTheme.colorScheme.primary,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
+            builder: (_) => ShowModalResultComponent(ref.read(bpmHearthBPMStateProvider.notifier).state)
           );
         }
         ref.read(bpmHearthBPMStateProvider.notifier).state = 0;
@@ -143,7 +93,9 @@ class _ResultBPMMeasurementComponentState extends ConsumerState<ResultBPMMeasure
                 cameraWidgetHeight: size.height * .05,
                 sampleDelay: 1000 ~/ 7,
                 onRawData: (value) {
-                  if (ref.read(dataHearthBPMStateProvider.notifier).state.length >= 100) ref.read(dataHearthBPMStateProvider.notifier).state.removeAt(0);
+                  if (ref.read(dataHearthBPMStateProvider.notifier).state.length >= 100) {
+                    ref.read(dataHearthBPMStateProvider.notifier).state.removeAt(0);
+                  }
                   ref.read(dataHearthBPMStateProvider.notifier).state.add(value);
                 },
                 onBPM: (value) => ref.read(bpmHearthBPMStateProvider.notifier).state = value,
@@ -153,7 +105,7 @@ class _ResultBPMMeasurementComponentState extends ConsumerState<ResultBPMMeasure
               begin: -300,
               duration: const Duration(milliseconds: 500),
               curve: Curves.fastEaseInToSlowEaseOut
-              ),
+            ),
             Gap(size.height * .02),
             Expanded(
               flex: 1,
@@ -213,7 +165,7 @@ class _ResultBPMMeasurementComponentState extends ConsumerState<ResultBPMMeasure
                             child: Center(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: <Widget>[
                                   SizedBox(
                                     child: Text(
                                       ref.read(bpmHearthBPMStateProvider.notifier).state.toString(),

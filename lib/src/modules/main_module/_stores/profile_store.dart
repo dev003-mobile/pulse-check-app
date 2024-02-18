@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import '../../../core/domain/entities/user_entity.dart';
-import '../../../core/domain/usecases/user_sign_out_usecase.dart';
-import '../../../core/domain/usecases/user_get_update_usecase.dart';
+import '../../../core/domain/usecases/user_usecases/user_get_update_usecase.dart';
+import '../../../core/domain/usecases/user_usecases/user_sign_out_usecase.dart';
 import '../../../core/external/datasources/local/local_storage_datasource.dart';
 
 class ProfileStore {
