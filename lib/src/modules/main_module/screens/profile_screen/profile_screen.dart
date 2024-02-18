@@ -8,6 +8,7 @@ import 'components/header_component.dart';
 import 'components/display_name_component.dart';
 import '../../../../core/presenter/common/design/app_theme_design.dart';
 import '../../../../core/presenter/utils/constants/app_name_constant.dart';
+import '../../../../core/presenter/common/widgets/loading_card_widget.dart';
 import '../../../../core/presenter/common/widgets/info_profile_data_widget.dart';
 import '../../../../core/presenter/common/widgets/textfield_default_widget.dart';
 import '../../../../core/presenter/providers/module_providers/profile_providers.dart';
@@ -54,13 +55,31 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      InfoProfileDataWidget(
-                        value: "102",
-                        description: AppNameConstant.totalBPM,
+                      FutureBuilder(
+                        future: widget._store.getTotalBPM(widget._store.data.uid!),
+                        builder: (_, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const LoadingCardWidget();
+                          } else {
+                            return InfoProfileDataWidget(
+                              value: snapshot.data.toString(),
+                              description: AppNameConstant.totalBPM,
+                            );
+                          }
+                        }
                       ),
-                      InfoProfileDataWidget(
-                        value: "8",
-                        description: AppNameConstant.measurementsText,
+                      FutureBuilder(
+                        future: widget._store.getCountMeasurement(widget._store.data.uid!),
+                        builder: (_, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const LoadingCardWidget();
+                          } else {
+                            return InfoProfileDataWidget(
+                              value: snapshot.data.toString(),
+                              description: AppNameConstant.measurementsText,
+                            );
+                          }
+                        }
                       )
                     ],
                   ),

@@ -18,4 +18,10 @@ class BloodPressureRepositoryImp implements IBloodPressureRepository {
 
   @override
   Future<List<BloodPressureEntity>> getAllMeasurements() async => await _pressureDatasource.getAllMeasurements();
+  
+  @override
+  Future<int> getTotalBPM(String userId) async => await _pressureDatasource.getTotalBPM(userId);
+  
+  @override
+  Future<int> getCountMeasurement(String userId) async => await _pressureDatasource.getCountMeasurement(userId);
 }

@@ -11,7 +11,7 @@ import '../../../domain/entities/blood_pressuse_entity.dart';
 class BloodPressureDatasourceRemoteImp implements IBloodPressureDatasource {
 
   http.Client client = http.Client();
-  final String urlAPI = "7f2d-102-214-36-175.ngrok-free.app";
+  final String urlAPI = "ea76-102-214-36-175.ngrok-free.app";
 
   @override
   Future<BloodPressureEntity> createMeasurement(BloodPressureEntity bloodPressureEntity) async {
@@ -24,11 +24,12 @@ class BloodPressureDatasourceRemoteImp implements IBloodPressureDatasource {
           "measurement_value": bloodPressureEntity.measurementValue,
           "measurement_date": bloodPressureEntity.measurementDate,
           "measurement_time": bloodPressureEntity.measurementTime,
+          "measurement_description_date": bloodPressureEntity.measurementDescriptionDate,
           "user_id": bloodPressureEntity.userId
         })
       );
+      log("ID: ${bloodPressureEntity.userId}");
       dynamic jsonParse = jsonDecode(response.body);
-      log("DATA: $jsonParse");
       BloodPressureEntity data = BloodPressureDTO.fromJson(jsonParse);
       return data;
     } catch (e) {
@@ -53,6 +54,28 @@ class BloodPressureDatasourceRemoteImp implements IBloodPressureDatasource {
     } catch (e) {
       client.close();
       throw Exception("Erro ao buscar medições");
+    }
+  }
+  
+  @override
+  Future<int> getTotalBPM(String userId) async {
+    try {
+      final response = await http.get(Uri.http(urlAPI, "/pulse-check/$userId"));   
+      return int.parse(response.body);    
+    } catch (e) {
+      client.close();
+      throw Exception("Erro ao buscar total de medições");
+    }
+  }
+  
+  @override
+  Future<int> getCountMeasurement(String userId) async {
+    try {
+      final response = await http.get(Uri.http(urlAPI, "/pulse-check/count-measurement/$userId"));
+      return int.parse(response.body);         
+    } catch (e) {
+      client.close();
+      throw Exception("Erro ao buscar contas de medições");
     }
   }
 

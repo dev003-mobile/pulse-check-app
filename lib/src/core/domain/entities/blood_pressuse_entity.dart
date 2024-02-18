@@ -4,6 +4,7 @@ class BloodPressureEntity {
   final int measurementValue;
   final String measurementDate;
   final String measurementTime;
+  final String measurementDescriptionDate;
 
   BloodPressureEntity({
     required this.unity,
@@ -11,5 +12,6 @@ class BloodPressureEntity {
     required this.measurementTime,
     required this.measurementDate,
     required this.measurementValue,
+    required this.measurementDescriptionDate
   });
 }

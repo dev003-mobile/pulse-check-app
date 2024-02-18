@@ -92,7 +92,7 @@ class _ListDataComponentState extends State<ListDataComponent> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      widget.snapshot.data?[index].measurementDate ?? "",
+                      widget.snapshot.data?[index].measurementDescriptionDate ?? "",
                       style: AppStyleDesign.fontStyleInter(
                         context: context,
                         size: size.height * .012,
