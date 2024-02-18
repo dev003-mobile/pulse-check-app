@@ -62,7 +62,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                             return const LoadingCardWidget();
                           } else {
                             return InfoProfileDataWidget(
-                              value: snapshot.data.toString(),
+                              value: snapshot.data != null ? snapshot.data.toString() : "0",
                               description: AppNameConstant.totalBPM,
                             );
                           }
@@ -75,7 +75,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                             return const LoadingCardWidget();
                           } else {
                             return InfoProfileDataWidget(
-                              value: snapshot.data.toString(),
+                              value: snapshot.data != null ? snapshot.data.toString() : "0",
                               description: AppNameConstant.measurementsText,
                             );
                           }

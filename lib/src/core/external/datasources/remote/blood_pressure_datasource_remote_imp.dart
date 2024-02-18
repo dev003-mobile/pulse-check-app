@@ -40,8 +40,19 @@ class BloodPressureDatasourceRemoteImp implements IBloodPressureDatasource {
 
   @override
   Future<Either<Exception, bool>> deleteMeasurement(String pk) async {
-    // TODO: implement deleteMeasurement
-    throw UnimplementedError();
+    try {
+      await http.delete(
+        Uri.parse("https://$urlAPI/pulse-check"), 
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonEncode({
+          "id": pk,
+        })
+      );
+      return const Right(true);
+    } catch (e) {
+      client.close();
+      throw Exception("Erro ao criar medição");
+    }
   }
 
   @override

@@ -7,6 +7,7 @@ import '../../../../modules/initial_module/screens/slide_screen/slide_screen.dar
 import '../../../../modules/auth_module/screens/sign_up_screen/sign_up_screen.dart';
 import '../../../../modules/auth_module/screens/sign_in_screen/sign_in_screen.dart';
 import '../../../../modules/initial_module/screens/splash_screen/splash_screen.dart';
+import '../../../../modules/main_module/screens/home_screen/measurement_details_screen.dart';
 import '../../../../modules/auth_module/screens/forgot_password_screen/forgot_password_screen.dart';
 
 class AppRoutes {
@@ -18,5 +19,6 @@ class AppRoutes {
     GetPage(name: AppNameRoute.forgotPasswordScreen, page: () => ForgotPasswordScreen()),
     GetPage(name: AppNameRoute.mainScreen, page: () => MainScreen()),
     GetPage(name: AppNameRoute.filterScreen, page: () => const FilterScreen()),
+    GetPage(name: AppNameRoute.measurementDetailsScreen, page: () => const MeasurementDetailsScreen()),
   ];
 }
