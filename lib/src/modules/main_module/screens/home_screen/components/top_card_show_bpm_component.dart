@@ -38,7 +38,7 @@ class TopCardShowBPMComponent extends StatelessWidget {
             ),
             Gap(size.height * .005),
             Container(
-              width: size.width * .3,
+              width: size.width * .32,
               height: size.height * .04,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),

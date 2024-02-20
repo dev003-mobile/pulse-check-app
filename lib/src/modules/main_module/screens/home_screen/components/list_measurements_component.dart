@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'list_data_component.dart';
-import 'list_empty_component.dart';
+import '../../../../../core/presenter/common/widgets/list_empty_widget.dart';
 import 'list_loading_component.dart';
 import '../../../_stores/home_store.dart';
 import '../../../../../core/domain/entities/blood_pressuse_entity.dart';
@@ -27,8 +27,10 @@ class _ListMeasurementsComponentState extends ConsumerState<ListMeasurementsComp
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const ListLoadingComponent();
+          } else if (snapshot.hasError) {
+            return const ListLoadingComponent();
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const ListEmptyComponent();
+            return const ListEmptyWidget();
           } else {
             return ListDataComponent(snapshot);
           }

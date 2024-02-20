@@ -1,12 +1,12 @@
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/presenter/common/design/app_style_design.dart';
-import '../../../../../core/presenter/common/design/app_theme_design.dart';
-import '../../../../../core/presenter/utils/constants/app_image_constants.dart';
+import '../design/app_style_design.dart';
+import '../design/app_theme_design.dart';
+import '../../utils/constants/app_image_constants.dart';
 
-class ListEmptyComponent extends StatelessWidget {
-  const ListEmptyComponent({super.key});
+class ListEmptyWidget extends StatelessWidget {
+  const ListEmptyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class ListEmptyComponent extends StatelessWidget {
           Gap(size.height * .01),
           SizedBox(
             child: Text(
-              "Faça a sua primeira medição para ser registrada",
+              "Faça medições para serem registradas",
               style: AppStyleDesign.fontStyleInter(
                 context: context,
                 size: size.height * .014,

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../domain/entities/blood_pressuse_entity.dart';
+import '../../domain/entities/filter_blood_pressure_entity.dart';
 import '../../domain/repositories/i_blood_pressure_repository.dart';
 import '../datasources/contracts/i_blood_pressure_datasource.dart';
 
@@ -24,4 +25,8 @@ class BloodPressureRepositoryImp implements IBloodPressureRepository {
   
   @override
   Future<int> getCountMeasurement(String userId) async => await _pressureDatasource.getCountMeasurement(userId);
+  
+  @override
+  Future<List<BloodPressureEntity>> getDataRangeFilter(FilterBloodPressureEntity filter) async => 
+    await _pressureDatasource.getDataRangeFilter(filter);
 }

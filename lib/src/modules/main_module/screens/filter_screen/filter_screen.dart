@@ -25,8 +25,8 @@ class FilterScreen extends ConsumerWidget {
             children: <Widget>[
               const DescriptionFilterComponent(),
               Gap(size.height * .03),
-              const CalendarFilterComponent(),
-              const ButtonApplyFilterComponent()
+              CalendarFilterComponent(),
+              ButtonApplyFilterComponent()
             ],
           )),
         ),

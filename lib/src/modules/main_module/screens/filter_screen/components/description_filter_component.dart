@@ -4,7 +4,14 @@ import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
 
 class DescriptionFilterComponent extends StatelessWidget {
-  const DescriptionFilterComponent({super.key});
+  const DescriptionFilterComponent({
+    super.key,
+    this.firstWord,
+    this.secondWord
+  });
+
+  final String? firstWord;
+  final String? secondWord;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +26,9 @@ class DescriptionFilterComponent extends StatelessWidget {
             color: AppThemeDesign.defaulTheme.colorScheme.background
           ),
           children: <TextSpan>[
-            const TextSpan(text: "Realize filtros de\n"),
+            TextSpan(text: firstWord ?? "Realize filtros de\n"),
             TextSpan(
-              text: "acordo a data",
+              text: secondWord ?? "acordo a data",
               style: AppStyleDesign.fontStyleInter(
                 context: context,
                 size: size.height * .04,

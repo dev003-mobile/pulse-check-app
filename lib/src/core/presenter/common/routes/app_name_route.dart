@@ -7,4 +7,5 @@ class AppNameRoute {
   static String mainScreen = "/main_screen";
   static String filterScreen = "/filter_screen";
   static String measurementDetailsScreen = "/measurement_details_screen";
+  static String filteredDataScreen = "/filtered_data_screen";
 }

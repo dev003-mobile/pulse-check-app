@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../domain/entities/filter_blood_pressure_entity.dart';
 import '../../dto/blood_pressure_dto.dart';
 import '../contracts/i_blood_pressure_datasource.dart';
 import '../../../domain/entities/blood_pressuse_entity.dart';
@@ -11,7 +12,7 @@ import '../../../domain/entities/blood_pressuse_entity.dart';
 class BloodPressureDatasourceRemoteImp implements IBloodPressureDatasource {
 
   http.Client client = http.Client();
-  final String urlAPI = "ea76-102-214-36-175.ngrok-free.app";
+  final String urlAPI = "b0e8-102-214-36-105.ngrok-free.app";
 
   @override
   Future<BloodPressureEntity> createMeasurement(BloodPressureEntity bloodPressureEntity) async {
@@ -87,6 +88,26 @@ class BloodPressureDatasourceRemoteImp implements IBloodPressureDatasource {
     } catch (e) {
       client.close();
       throw Exception("Erro ao buscar contas de medições");
+    }
+  }
+  
+  @override
+  Future<List<BloodPressureEntity>> getDataRangeFilter(FilterBloodPressureEntity filter) async {
+    try {
+      final response = await http.post(
+        Uri.parse("https://$urlAPI/pulse-check/filter"), 
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonEncode({
+          "start_date": filter.startDate,
+          "end_date": filter.endDate
+        }),
+      );
+      List<dynamic> jsonParse = jsonDecode(response.body);
+      List<BloodPressureEntity> data = jsonParse.map((e) => BloodPressureDTO.fromJson(e)).toList();
+      return data;
+    } catch (e) {
+      client.close();
+      throw Exception("Erro ao buscar filtro de medições"); 
     }
   }
 
