@@ -2,13 +2,13 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../../../core/domain/entities/user_entity.dart';
 import '../../../../../core/presenter/common/routes/app_name_route.dart';
 import '../../../../../core/presenter/common/design/app_style_design.dart';
 import '../../../../../core/presenter/common/design/app_theme_design.dart';
 import '../../../../../core/presenter/utils/constants/app_name_constant.dart';
-import '../../../../../core/presenter/utils/constants/app_image_constants.dart';
 
 class HeaderHomeComponent extends StatefulWidget {
   const HeaderHomeComponent(this._store, {super.key});
@@ -35,10 +35,35 @@ class _HeaderHomeComponentState extends State<HeaderHomeComponent> {
               SizedBox( 
                 child: Row(
                   children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: AssetImage(
-                        AppImageConstants.meImage
+                    Visibility(
+                      visible: widget._store?.profileUrl != null,
+                      replacement: Container(
+                        height: size.height * .1,
+                        width: size.width * .15,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          LucideIcons.user,
+                          size: size.height * .03,
+                        ),
                       ),
+                      child: CachedNetworkImage(
+                        maxHeightDiskCache: 200,
+                        imageBuilder: (_, imageProvider) => Container(
+                          height: size.height * .1,
+                          width: size.width * .15,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover
+                            ),
+                          ),
+                        ),
+                        fadeOutCurve: Curves.fastEaseInToSlowEaseOut,
+                        imageUrl: widget._store?.profileUrl ?? "",
+                      )
                     ),
                     Gap(size.width * .02),
                     Column(

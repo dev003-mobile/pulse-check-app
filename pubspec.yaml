@@ -11,6 +11,7 @@ environment:
 dependencies:
   animated_text_kit: ^4.2.2
   avatar_glow: ^3.0.1
+  cached_network_image: ^3.3.1
   calendar_date_picker2: ^0.5.3
   cloud_firestore: ^4.15.4
   credential_manager: ^0.0.4
@@ -22,6 +23,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
+  flutter_cache_manager: ^3.3.1
   flutter_launcher_icons: ^0.13.1
   flutter_localizations:
     sdk: flutter
@@ -48,7 +50,7 @@ flutter_launcher_icons:
   image_path: "assets/icon/icon-min.png"
 
 dev_dependencies:
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
 

@@ -35,7 +35,7 @@ class _ResultBPMMeasurementComponentState extends ConsumerState<ResultBPMMeasure
     super.initState();
     widget._store.data = widget._store.getUser();
     scheduleMicrotask(() {
-      Future.delayed(const Duration(seconds: 10), () {
+      Future.delayed(const Duration(seconds: 20), () {
         ref.read(isMeasuringStateProvider.notifier).state = false;
         widget._store.createMeasurement(BloodPressureEntity(
           unity: "bpm", 
@@ -49,7 +49,12 @@ class _ResultBPMMeasurementComponentState extends ConsumerState<ResultBPMMeasure
           return showModalBottomSheet(
             context: context, 
             isDismissible: false,
-            builder: (_) => ShowModalResultComponent(ref.read(bpmHearthBPMStateProvider.notifier).state)
+            builder: (_) {
+              if (mounted) {
+                return ShowModalResultComponent(ref.read(bpmHearthBPMStateProvider.notifier).state);
+              }
+              return const SizedBox();
+            }
           );
         }
         ref.read(bpmHearthBPMStateProvider.notifier).state = 0;

@@ -46,6 +46,7 @@ class UserDatasourceRemoteImp implements IUserDatasource {
 
   @override
   Future<Either<Exception, UserCredential>> googleAuth() async { 
+    final CollectionReference<Map<String, dynamic>> userCollection = firestore.collection("users");
     try {
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
@@ -54,6 +55,19 @@ class UserDatasourceRemoteImp implements IUserDatasource {
         idToken: googleAuth?.idToken
       );
       final UserCredential userCredential = await auth.signInWithCredential(credential);
+      await getCreateCurrentUser(UserDTO(
+        email: userCredential.user?.email,
+        uid: userCredential.user?.uid,
+        name: userCredential.user?.displayName,
+        profileUrl: userCredential.user?.photoURL
+      ));
+      await userCollection.doc(userCredential.user?.uid).get();
+      await localStorage.put("user", jsonEncode(UserDTO(
+        email: userCredential.user?.email,
+        uid: userCredential.user?.uid,
+        name: userCredential.user?.displayName,
+        profileUrl: userCredential.user?.photoURL
+      ).toJson()));
       return Right(userCredential);
     } catch (e) {
       return Left(Exception("Falha ao tentar logar!"));
@@ -73,7 +87,7 @@ class UserDatasourceRemoteImp implements IUserDatasource {
       );
       final DocumentSnapshot<Map<String, dynamic>> snapshot = await userCollection.doc(userCredential.user?.uid).get();
       final UserDTO userParse = UserDTO.fromJson(snapshot);
-      localStorage.put("user", jsonEncode(userParse.toJson()));
+      await localStorage.put("user", jsonEncode(userParse.toJson()));
       return Right(userCredential);
     } on FirebaseAuthException {
       return Left(Exception('Falha ao tentar logar!'));
@@ -95,8 +109,16 @@ class UserDatasourceRemoteImp implements IUserDatasource {
         uid: userCredential.user?.uid,
       ));
       return Right(userCredential);
-    }  catch (e) {
-      return Left(Exception("Reforce a senha ou verifique a conexão!"));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        return Left(Exception("A palavra-passe fornecida é demasiado fraca."));
+      } else if (e.code == 'email-already-in-use') {
+        return Left(Exception("O e-mail já em uso"));
+      } else {
+        return Left(Exception("Verifique sua ligação à internet"));
+      }
+    } catch (e) {
+      return Left(Exception("Verifique sua ligação à internet"));
     }
   }
   
